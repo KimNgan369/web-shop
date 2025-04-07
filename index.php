@@ -28,3 +28,6 @@ if (!isset($_GET['pg'])) {
 
 include "view/footer.php";
 ?>
+
+<!-- emlagietcho -->
+ 
