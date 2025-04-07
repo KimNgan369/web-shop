@@ -109,6 +109,7 @@
                 <h3 class="fw-bold">Shop by</h3>
                 <h3 class="fw-bold">Jewelry Type</h3>
                 <button class="btn btn-warning w-50">View all →</button>
+                <!-- <li><a href="?pg=shop">Shop</a></li> -->
             </div>
             
 
