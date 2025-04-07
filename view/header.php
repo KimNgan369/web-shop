@@ -38,7 +38,7 @@
         
         <div class="signup-container">
             <button class="sign-up-btn">SIGN UP</button>
-            <!-- Logo va ten cua trang web -->
+
             <!-- <div class="navbar-left mx-auto">
                 <img src="layout/img/logo.png" alt="MYTH Logo" width="50"> 
                 <span class="fw-bold">MYTH</span> 
