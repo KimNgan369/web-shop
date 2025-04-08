@@ -30,7 +30,7 @@
         
         <div class="navigation-links">
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="?pg=shop">Shop</a></li>
                 <li><a href="#">Contacts</a></li>
             </ul>

@@ -15,6 +15,7 @@ if (!isset($_GET['pg'])) {
 } else {
     switch ($_GET['pg']) {
         case 'shop':
+            $dssp=get_dssp(6);
             include "view/shop.php";
             break;
         case 'gioithieu':
@@ -28,9 +29,4 @@ if (!isset($_GET['pg'])) {
 
 include "view/footer.php";
 ?>
-<<<<<<< HEAD
-=======
 
-<!-- emlagietcho -->
- 
->>>>>>> a12964f0e33ff6e7014ccf54dbbdda8530fe85a7

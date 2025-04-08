@@ -46,6 +46,35 @@ function get_bestselling($limi) {
     return pdo_query($sql);
 }
 
+function get_dssp($limi, $filtered_price = [], $filtered_material = [], $filtered_style = []) {
+    $sql = "SELECT * FROM products WHERE 1"; 
+
+    // Lọc theo giá
+    if (!empty($filtered_price)) {
+        $price_conditions = [];
+        foreach ($filtered_price as $price) {
+            list($min, $max) = explode('-', $price);
+            $price_conditions[] = "price BETWEEN $min AND $max";
+        }
+        $sql .= " AND (" . implode(" OR ", $price_conditions) . ")";
+    }
+
+    // Lọc theo vật liệu
+    if (!empty($filtered_material)) {
+        $sql .= " AND material IN ('" . implode("','", $filtered_material) . "')";
+    }
+
+    // Lọc theo phong cách
+    if (!empty($filtered_style)) {
+        $sql .= " AND style IN ('" . implode("','", $filtered_style) . "')";
+    }
+
+    // Thêm sắp xếp và giới hạn
+    $sql .= " ORDER BY id DESC LIMIT " . $limi;
+
+    return pdo_query($sql);  // Thực thi truy vấn
+}
+
 
 
 // function hang_hoa_select_by_id($ma_hh){
