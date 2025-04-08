@@ -27,12 +27,8 @@ require_once 'pdo.php';
 
 function get_danhmucsp() {
     $sql = "SELECT * FROM categories";  // Truy vấn lấy các danh mục
-<<<<<<< HEAD
     return pdo_query($sql);  // Trả về kết quả từ truy vấn
     //hihihihihi dung ne
-=======
-    return pdo_query($sql);  
->>>>>>> a12964f0e33ff6e7014ccf54dbbdda8530fe85a7
 }
 
 
