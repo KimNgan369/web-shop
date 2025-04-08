@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Apr 07, 2025 at 03:07 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th4 08, 2025 lúc 05:04 PM
+-- Phiên bản máy phục vụ: 10.4.32-MariaDB
+-- Phiên bản PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `myjewelryshop`
+-- Cơ sở dữ liệu: `myjewelryshop`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cart`
+-- Cấu trúc bảng cho bảng `cart`
 --
 
 CREATE TABLE `cart` (
@@ -37,7 +37,7 @@ CREATE TABLE `cart` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Cấu trúc bảng cho bảng `categories`
 --
 
 CREATE TABLE `categories` (
@@ -47,7 +47,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `categories`
+-- Đang đổ dữ liệu cho bảng `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`, `image`) VALUES
@@ -59,7 +59,7 @@ INSERT INTO `categories` (`id`, `name`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `feedback`
+-- Cấu trúc bảng cho bảng `feedback`
 --
 
 CREATE TABLE `feedback` (
@@ -74,7 +74,7 @@ CREATE TABLE `feedback` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Cấu trúc bảng cho bảng `orders`
 --
 
 CREATE TABLE `orders` (
@@ -88,7 +88,7 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `orders`
+-- Đang đổ dữ liệu cho bảng `orders`
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `order_date`, `total_amount`, `payment_method`, `shipping_address`, `status`) VALUES
@@ -99,7 +99,7 @@ INSERT INTO `orders` (`id`, `user_id`, `order_date`, `total_amount`, `payment_me
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_items`
+-- Cấu trúc bảng cho bảng `order_items`
 --
 
 CREATE TABLE `order_items` (
@@ -111,7 +111,7 @@ CREATE TABLE `order_items` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `order_items`
+-- Đang đổ dữ liệu cho bảng `order_items`
 --
 
 INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`, `price`) VALUES
@@ -122,34 +122,35 @@ INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`, `price`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Cấu trúc bảng cho bảng `products`
 --
 
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text DEFAULT NULL,
-  `price` decimal(10,2) NOT NULL,
+  `price` decimal(10,0) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
   `material` varchar(255) DEFAULT NULL,
+  `style` varchar(20) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `products`
+-- Đang đổ dữ liệu cho bảng `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`, `category_id`, `material`, `created_at`, `updated_at`) VALUES
-(4, 'Poseidon TRIDON', 'Ring inspired by Greek mythology', 100.00, 'poseidon.png', 4, 'Silver', '2025-04-04 14:10:04', '2025-04-04 14:10:04'),
-(5, 'Zeus THUNDER', 'Ring symbolizing the power of Zeus', 100.00, 'zeus.png', 4, 'Silver', '2025-04-04 14:10:04', '2025-04-04 14:10:04'),
-(6, 'Hermes CADUCEUS', 'Necklace with Hermes’ winged staff', 100.00, 'hermes.png', 2, 'Silver', '2025-04-04 14:10:04', '2025-04-04 14:10:04');
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`, `category_id`, `material`, `style`, `created_at`, `updated_at`) VALUES
+(4, 'Poseidon TRIDON', 'Ring inspired by Greek mythology', 100, 'poseidon.png', 4, 'Golden', 'Bold', '2025-04-04 14:10:04', '2025-04-08 14:46:00'),
+(5, 'Zeus THUNDER', 'Ring symbolizing the power of Zeus', 100, 'zeus.png', 4, 'Silver', 'Themes', '2025-04-04 14:10:04', '2025-04-08 14:03:29'),
+(6, 'Hermes CADUCEUS', 'Necklace with Hermes’ winged staff', 100, 'hermes.png', 2, 'Silver', 'Hidden', '2025-04-04 14:10:04', '2025-04-08 14:03:05');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transactions`
+-- Cấu trúc bảng cho bảng `transactions`
 --
 
 CREATE TABLE `transactions` (
@@ -162,7 +163,7 @@ CREATE TABLE `transactions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Cấu trúc bảng cho bảng `users`
 --
 
 CREATE TABLE `users` (
@@ -180,7 +181,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Đang đổ dữ liệu cho bảng `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `full_name`, `email`, `phone`, `address`, `total_spent`, `is_vip`, `created_at`, `updated_at`) VALUES
@@ -191,7 +192,7 @@ INSERT INTO `users` (`id`, `username`, `password`, `full_name`, `email`, `phone`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vip_upgrades`
+-- Cấu trúc bảng cho bảng `vip_upgrades`
 --
 
 CREATE TABLE `vip_upgrades` (
@@ -202,11 +203,11 @@ CREATE TABLE `vip_upgrades` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `cart`
+-- Chỉ mục cho bảng `cart`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`),
@@ -214,13 +215,13 @@ ALTER TABLE `cart`
   ADD KEY `product_id` (`product_id`);
 
 --
--- Indexes for table `categories`
+-- Chỉ mục cho bảng `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `feedback`
+-- Chỉ mục cho bảng `feedback`
 --
 ALTER TABLE `feedback`
   ADD PRIMARY KEY (`id`),
@@ -228,14 +229,14 @@ ALTER TABLE `feedback`
   ADD KEY `product_id` (`product_id`);
 
 --
--- Indexes for table `orders`
+-- Chỉ mục cho bảng `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `order_items`
+-- Chỉ mục cho bảng `order_items`
 --
 ALTER TABLE `order_items`
   ADD PRIMARY KEY (`id`),
@@ -243,136 +244,136 @@ ALTER TABLE `order_items`
   ADD KEY `product_id` (`product_id`);
 
 --
--- Indexes for table `products`
+-- Chỉ mục cho bảng `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD KEY `category_id` (`category_id`);
 
 --
--- Indexes for table `transactions`
+-- Chỉ mục cho bảng `transactions`
 --
 ALTER TABLE `transactions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `users`
+-- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- Indexes for table `vip_upgrades`
+-- Chỉ mục cho bảng `vip_upgrades`
 --
 ALTER TABLE `vip_upgrades`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `cart`
+-- AUTO_INCREMENT cho bảng `cart`
 --
 ALTER TABLE `cart`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `categories`
+-- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `feedback`
+-- AUTO_INCREMENT cho bảng `feedback`
 --
 ALTER TABLE `feedback`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `order_items`
+-- AUTO_INCREMENT cho bảng `order_items`
 --
 ALTER TABLE `order_items`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `transactions`
+-- AUTO_INCREMENT cho bảng `transactions`
 --
 ALTER TABLE `transactions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `vip_upgrades`
+-- AUTO_INCREMENT cho bảng `vip_upgrades`
 --
 ALTER TABLE `vip_upgrades`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `cart`
+-- Các ràng buộc cho bảng `cart`
 --
 ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
 --
--- Constraints for table `feedback`
+-- Các ràng buộc cho bảng `feedback`
 --
 ALTER TABLE `feedback`
   ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `feedback_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
 --
--- Constraints for table `orders`
+-- Các ràng buộc cho bảng `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `order_items`
+-- Các ràng buộc cho bảng `order_items`
 --
 ALTER TABLE `order_items`
   ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
   ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
 --
--- Constraints for table `products`
+-- Các ràng buộc cho bảng `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`);
 
 --
--- Constraints for table `transactions`
+-- Các ràng buộc cho bảng `transactions`
 --
 ALTER TABLE `transactions`
   ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `vip_upgrades`
+-- Các ràng buộc cho bảng `vip_upgrades`
 --
 ALTER TABLE `vip_upgrades`
   ADD CONSTRAINT `vip_upgrades_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
