@@ -29,4 +29,4 @@ if (!isset($_GET['pg'])) {
 
 include "view/footer.php";
 ?>
-<!-- helo -->
+<!-- thu xiu nha -->
