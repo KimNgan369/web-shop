@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>MYTH Store</title> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Import font Poppins tu Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap" rel="stylesheet">
+    <!-- Import Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+</head>
+<body>
+    <!-- Container chinh -->
+    <div class="container mt-4"> <!-- Khoi chua banner, them khoang cach tren (mt-4) -->
+        <div class="image-container"> <!-- Chua hinh anh va chu overlay -->
+            <img src="../img/handwithring.jpg" class="img-fluid w-100" alt="Rings Image"> <!-- Hinh anh toan man hinh, dam bao hien thi dep -->
+            <div class="overlay-text"> <!-- Phan chu tren hinh anh -->
+                <h1>HIGH END MYTHICAL RING</h1> <!-- Tieu de chinh -->
+                <p>SOPHISTICATION AND CLASS IN EVERY DETAIL</p> <!-- Mo ta ngan -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Danh muc san pham -->
+    <div class="container mt-5"> <!-- Them khoang cach tren (mt-5) -->
+        <div class="row align-items-center"> <!-- Can chinh cac thanh phan theo chieu doc -->
+            
+            <!-- Phan tieu de va nut xem tat ca -->
+            <div class="col-md-3 text-md-start text-center mb-3 mb-md-0">
+                <h3 class="fw-bold ms-4">RING CATALOG</h3> <!-- Tieu de danh muc -->
+                <p class="text-muted fw-light ms-4">I am sure that with the right ring, you can conquer the world.!</p> <!-- Mo ta -->
+                <a href="#" class="btn btn-warning fw-bold ms-4">View all →</a> <!-- Nut xem tat ca -->
+            </div>            
+            
+            <!-- Danh sach san pham -->
+            <div class="col-md-9">
+                <div class="row row-cols-2 row-cols-md-4 g-3"> <!-- Hien thi 2 cot tren mobile, 4 cot tren desktop -->
+                    
+                    <!-- San pham 1 -->
+                    <div class="col">
+                        <div class="text-center">
+                            <img src="../img/poseidonsquare.png" class="img-fluid rounded" alt="Poseidon Ring">
+                            <p class="fw-bold mt-2">POSEIDON</p> <!-- Ten san pham -->
+                        </div>
+                    </div>
+
+                    <!-- San pham 2 -->
+                    <div class="col">
+                        <div class="text-center">
+                            <img src="../img/hades.png" class="img-fluid rounded" alt="Hades Ring">
+                            <p class="fw-bold mt-2">HADES</p>
+                        </div>
+                    </div>
+
+                    <!-- San pham 3 -->
+                    <div class="col">
+                        <div class="text-center">
+                            <img src="../img/aressquare.png" class="img-fluid rounded" alt="Ares Ring">
+                            <p class="fw-bold mt-2">ARES</p>
+                        </div>
+                    </div>
+
+                    <!-- San pham 4 -->
+                    <div class="col">
+                        <div class="text-center">
+                            <img src="../img/zeussquare.png" class="img-fluid rounded" alt="Zeus Ring">
+                            <p class="fw-bold mt-2">ZEUS</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Huong dan chon nhan -->
+    <div class="container my-5"> <!-- Khoi chua phan huong dan chon nhan -->
+        <div class="row g-0 rounded-4 overflow-hidden"> <!-- Bo tron goc va tranh tran noi dung -->
+
+            <!-- Phan ben trai (chu + nen vang) -->
+            <div class="col-md-6 p-4 d-flex flex-column justify-content-center" style="background-color: #EAD169;">
+                <h3 class="fw-bold mb-3">RING SELECTION GUIDE</h3> <!-- Tieu de -->
+                <ul class="list-unstyled"> <!-- Danh sach nhan -->
+                    <li class="ms-4"><strong>Zeus:</strong> <span class="text-muted">Supreme Power: Powerful Ring, Lightning Bolt, Eagle Symbol.</span></li>
+                    <li class="ms-4"><strong>Poseidon:</strong> <span class="text-muted">Mighty Sea: Wave Pattern Ring, Trident, Mythical Creature.</span></li>
+                    <li class="ms-4"><strong>Hades:</strong> <span class="text-muted">Dark Mystery: Gothic Ring, Dark Tone, Skull, Hellfire.</span></li>
+                    <li class="ms-4"><strong>Ares:</strong> <span class="text-muted">Mighty Warrior: Warrior Ring, Spartan Helmet, Crossed Swords.</span></li>
+                </ul>
+                <div class="mt-3">
+                    <a href="#" class="btn btn-dark fw-bold">LEARN MORE</a> <!-- Nut xem chi tiet -->
+                </div>
+            </div>
+
+            <!-- Phan ben phai (hinh anh) -->
+            <div class="col-md-6">
+                <img src="../img/makering.jpg" alt="Ring Crafting" class="img-fluid h-100 w-100 object-fit-cover">
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Muc ban chay nhat -->
+    <section class="container my-5">
+        <div class="row">
+            <div class="col-md-3 d-flex flex-column justify-content-center">
+                <h3 class="fw-bold">Best Selling Rings</h3> <!-- Tieu de danh muc -->
+                <p class="text-muted fw-light">The easiest way to exude charisma is to buy jewelry that you love.</p>
+                <button class="btn btn-warning">See more →</button> <!-- Nut xem them -->
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    <!-- San pham Poseidon TRIDON -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card custom-card">
+                            <img src="../img/poseidon.png" class="card-img-top" alt="Poseidon TRIDON"> <!-- Hinh anh san pham -->
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Poseidon ‘TRIDON’</h5> <!-- Ten san pham -->
+                                <p class="text-muted">Price: 100$</p> <!-- Gia san pham -->
+                                <a href="#" class="text-decoration-none">Explore Now! →</a> <!-- Nut mua hang -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- San pham Zeus THUNDER -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card custom-card">
+                            <img src="../img/zeus.png" class="card-img-top" alt="Zeus THUNDER">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Zeus ‘THUNDER’</h5>
+                                <p class="text-muted">Price: 100$</p>
+                                <a href="#" class="text-decoration-none">Explore Now! →</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- San pham Hermes CADUCEUS -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card custom-card">
+                            <img src="../img/ares.png" class="card-img-top" alt="Hermes CADUCEUS">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Ares 'WARRIOR'</h5>
+                                <p class="text-muted">Price: 100$</p>
+                                <a href="#" class="text-decoration-none">Explore Now! →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Footer -->
+    <footer class="footer bg-light py-5"> <!-- Tao phan footer, nen mau sang (bg-light), padding tren duoi la 5 -->
+        <div class="container text-center"> <!-- Chua noi dung, can giua toan bo text -->
+            <h4 class="fw-bold">About us</h4> <!-- Tieu de chinh cua footer, in dam -->
+            <p class="text-muted">Order now and you will be satisfied</p> <!-- Dong mo ta, mau chu nhat hon -->
+
+            <div class="row mt-4"> <!-- Bat dau mot hang chua 3 cot, margin-top 4 -->
+                
+                <!-- Cot 1: Large Assortment -->
+                <div class="col-md-4"> <!-- Chia 3 phan bang nhau, moi phan chiem 4 cot tren man hinh trung binh tro len -->
+                    <div class="icon-box"> <!-- Khung chua icon va noi dung -->
+                        <div class="icon-circle"> <!-- Hinh tron chua icon -->
+                            <img src="../img/LOGO.png" alt="Large Assortment" class="icon-img"> <!-- Bieu tuong -->
+                        </div>
+                        <h5 class="fw-bold mt-3">Large Assortment</h5> <!-- Tieu de in dam, margin-top 3 -->
+                        <p class="text-muted">We offer many different types of products with fewer variations in each category.</p> <!-- Mo ta voi mau chu nhat -->
+                    </div>
+                </div>
+
+                <!-- Cot 2: Fast & Free Shipping -->
+                <div class="col-md-4"> <!-- Cot thu hai trong hang -->
+                    <div class="icon-box"> <!-- Khung chua icon va noi dung -->
+                        <div class="icon-circle"> <!-- Hinh tron chua icon -->
+                            <i class="bi bi-box-seam"></i> <!-- Bieu tuong Bootstrap Icons -->
+                        </div>
+                        <h5 class="fw-bold mt-3">Fast & Free Shipping</h5> <!-- Tieu de in dam, margin-top 3 -->
+                        <p class="text-muted">4-day or less delivery time, free shipping and an expedited delivery option.</p> <!-- Mo ta voi mau chu nhat -->
+                    </div>
+                </div>
+
+                <!-- Cot 3: 24/7 Support -->
+                <div class="col-md-4"> <!-- Cot thu ba trong hang -->
+                    <div class="icon-box"> <!-- Khung chua icon va noi dung -->
+                        <div class="icon-circle"> <!-- Hinh tron chua icon -->
+                            <i class="bi bi-telephone"></i> <!-- Bieu tuong Bootstrap Icons -->
+                        </div>
+                        <h5 class="fw-bold mt-3">24/7 Support</h5> <!-- Tieu de in dam, margin-top 3 -->
+                        <p class="text-muted">Answers to any business-related inquiry 24/7 and in real-time.</p> <!-- Mo ta voi mau chu nhat -->
+                    </div>
+                </div>
+
+            </div>
+        </div> 
+    </footer> 
+
+    <script src="../js/script.js"></script>
+    
+</body>
+</html>
