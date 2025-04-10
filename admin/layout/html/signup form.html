@@ -1,0 +1,146 @@
+<!DOCTYPE html> <!-- Xác định đây là tài liệu HTML5 -->
+<html lang="en"> <!-- Ngôn ngữ của trang là tiếng Anh -->
+<head>
+    <meta charset="UTF-8"> <!-- Thiết lập bảng mã UTF-8 để hỗ trợ đa ngôn ngữ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Đảm bảo trang hiển thị tốt trên thiết bị di động -->
+    <title>Sign Up Form</title> <!-- Tiêu đề của trang -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- Nhúng Bootstrap để tạo kiểu giao diện -->
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+        function validatePassword() {
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirmPassword');
+            const errorMessage = document.getElementById('passwordError');
+            const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/; 
+            // Biểu thức chính quy kiểm tra mật khẩu có ít nhất 8 ký tự, bao gồm chữ, số và ký tự đặc biệt
+            
+            if (!passwordPattern.test(password.value)) { // Kiểm tra mật khẩu có đúng định dạng không
+                errorMessage.textContent = "Password must be at least 8 characters long and include letters, numbers, and symbols.";
+                password.classList.add('is-invalid'); // Hiển thị lỗi bằng cách thêm class is-invalid
+            } else {
+                errorMessage.textContent = "";
+                password.classList.remove('is-invalid'); // Xóa lỗi nếu nhập đúng định dạng
+            }
+            
+            if (password.value !== confirmPassword.value) { // Kiểm tra xác nhận mật khẩu
+                confirmPassword.classList.add('is-invalid');
+            } else {
+                confirmPassword.classList.remove('is-invalid');
+            }
+            
+            function onSubmit(token) {
+                document.getElementById("demo-form").submit();
+            }
+        }
+    </script>
+
+    <style>
+        .recaptcha-logo {
+            margin-left: auto;
+            width: 40px;
+        }
+        /* Hiệu ứng hover cho nút */
+        .hover-effect:hover {
+            background-color: #5a6268 !important; /* Màu xám đậm hơn */
+            color: white !important; /* Chữ màu trắng */
+        }
+        
+        .hover-effect {
+            transition: background-color 0.3s ease-in-out; /* Tạo hiệu ứng chuyển màu mượt mà */
+        }
+    </style>
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 110vh;"> <!-- Căn giữa form theo chiều dọc và ngang -->
+        <div class="col-md-8 col-lg-6 shadow p-4 rounded"> <!-- Khung chứa form, có bóng và bo góc -->
+            <h4 class="text-center mb-4">Sign up with your email address</h4> <!-- Tiêu đề của form -->
+            <form>
+                <div class="mb-3"> <!-- Ô nhập tên người dùng -->
+                    <label class="form-label">Profile name</label>
+                    <input type="text" class="form-control" placeholder="Enter your profile name"> <!-- Ô nhập liệu -->
+                </div>
+                <div class="mb-3"> <!-- Ô nhập mật khẩu -->
+                    <label class="form-label">Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="Enter your password" oninput="validatePassword()"> <!-- Gọi hàm kiểm tra mật khẩu khi nhập -->
+                    <div class="invalid-feedback" id="passwordError"></div> <!-- Hiển thị lỗi nếu có -->
+                    <small class="text-muted">Use 8 or more characters with a mix of letters, numbers & symbols</small> <!-- Hướng dẫn nhập mật khẩu -->
+                </div>
+                <div class="mb-3"> <!-- Ô nhập lại mật khẩu -->
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" id="confirmPassword" class="form-control" placeholder="Enter your password" oninput="validatePassword()">
+                    <div class="invalid-feedback">Passwords do not match.</div> <!-- Hiển thị lỗi nếu mật khẩu không khớp -->
+                </div>
+                <div class="mb-3"> <!-- Lựa chọn giới tính -->
+                    <label class="form-label">What's your gender? (optional)</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="female">
+                        <label class="form-check-label" for="female">Female</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="male">
+                        <label class="form-check-label" for="male">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="non-binary">
+                        <label class="form-check-label" for="non-binary">Non-binary</label>
+                    </div>
+                </div>
+                <div class="mb-3"> <!-- Nhập ngày sinh -->
+                    <label class="form-label">What's your date of birth?</label>
+                    <div class="d-flex gap-2"> <!-- Căn các ô nhập tháng, ngày, năm cách nhau -->
+                        <select class="form-select">
+                            <option>Month</option>
+                            <option>January</option>
+                            <option>February</option>
+                            <option>March</option>
+                            <option>April</option>
+                            <option>May</option>
+                            <option>June</option>
+                            <option>July</option>
+                            <option>August</option>
+                            <option>September</option>
+                            <option>October</option>
+                            <option>November</option>
+                            <option>December</option>
+                        </select>
+                        <select class="form-select">
+                            <option>Date</option>
+                            <script>
+                                for (let i = 1; i <= 31; i++) {
+                                    document.write(`<option>${i}</option>`);
+                                }
+                            </script>
+                        </select>
+                        <select class="form-select">
+                            <option>Year</option>
+                            <script>
+                                for (let i = new Date().getFullYear(); i >= 1900; i--) {
+                                    document.write(`<option>${i}</option>`);
+                                }
+                            </script>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-3 form-check"> <!-- Checkbox chia sẻ dữ liệu -->
+                    <input type="checkbox" class="form-check-input" id="marketing">
+                    <label class="form-check-label" for="marketing">Share my registration data with our content providers for marketing purposes.</label>
+                </div>
+                <div class="mb-3"> <!-- Điều khoản sử dụng -->
+                    <small>By creating an account, you agree to the <a href="#">Terms of use</a> and <a href="#">Privacy Policy</a>.</small>
+                </div>
+                <div class="mb-3"> 
+                    <div class="d-flex align-items-center border rounded p-3" style="width: 250px; border-radius: 20px;">
+                        <input class="form-check-input me-2" type="checkbox" id="recaptcha">
+                        <label class="form-check-label" for="recaptcha">I'm not a robot</label>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/RecaptchaLogo.svg" alt="reCAPTCHA" class="recaptcha-logo">                    </div>
+                </div>
+                <button class="btn bg-secondary text-white w-100 mb-3 rounded-pill hover-effect"> 
+                    Sign Up
+                </button>
+            </form>
+            <p class="text-center mt-3">Already have an account? <a href="#">Log in</a></p> <!-- Đường dẫn đến trang đăng nhập -->
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> <!-- Nhúng Bootstrap JS -->
+</body>
+</html>

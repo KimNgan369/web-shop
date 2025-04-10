@@ -1,5 +1,8 @@
 <?php
+<<<<<<< HEAD
 include "../dao/products.php";
+=======
+>>>>>>> 5aaec78ab1a184ec675d04bd478700e6e7834a55
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Nhận các bộ lọc từ form POST
     $filtered_price = isset($_POST['price']) ? $_POST['price'] : [];

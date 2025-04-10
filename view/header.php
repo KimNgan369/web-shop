@@ -24,10 +24,14 @@
     <nav class="navbar navbar-light fixed-top">
         <div class="container">
         <div class="logo-container">
+<<<<<<< HEAD
         <img src="<?= (basename($_SERVER['PHP_SELF']) == 'rings.php' ? '../' : '') ?>layout/img/LOGO.png"
             alt="MYTH"
             class="logo"
             style="width: 50px; height: 50px; object-fit: contain;">
+=======
+            <img src="layout/img/LOGO.png" alt="MYTH" class="logo">
+>>>>>>> 5aaec78ab1a184ec675d04bd478700e6e7834a55
             <span class="brand-name">MYTH</span>
         </div>
         

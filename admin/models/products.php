@@ -75,60 +75,12 @@ function get_dssp($limi, $filtered_price = [], $filtered_material = [], $filtere
     return pdo_query($sql);  // Thực thi truy vấn
 }
 
-<<<<<<< HEAD
-function get_products_by_category_id($category_id) {
-    $sql = "SELECT * FROM products WHERE category_id = ?";
-    return pdo_query($sql, $category_id);
-}
-function get_products_filtered_by_category($category_id, $price_arr, $material_arr, $style_arr) {
-    $sql = "SELECT * FROM products WHERE category_id = ?";
-    $params = [$category_id];
-
-    // Filter theo price
-    if (!empty($price_arr)) {
-        $price_conditions = [];
-        foreach ($price_arr as $range) {
-            [$min, $max] = explode('-', $range);
-            $price_conditions[] = "(price BETWEEN ? AND ?)";
-            $params[] = $min;
-            $params[] = $max;
-        }
-        $sql .= " AND (" . implode(" OR ", $price_conditions) . ")";
-    }
-
-    // Filter theo material
-    if (!empty($material_arr)) {
-        $placeholders = implode(',', array_fill(0, count($material_arr), '?'));
-        $sql .= " AND material IN ($placeholders)";
-        $params = array_merge($params, $material_arr);
-    }
-
-    // Filter theo style
-    if (!empty($style_arr)) {
-        $placeholders = implode(',', array_fill(0, count($style_arr), '?'));
-        $sql .= " AND style IN ($placeholders)";
-        $params = array_merge($params, $style_arr);
-    }
-
-    return pdo_query($sql, ...$params);
-}
-
-
-
-
-
-function get_sp_by_id($id){
-    $sql = "SELECT * FROM sanpham WHERE id=?";
-    return pdo_query_one($sql, $id);
-} 
-=======
 
 
 // function hang_hoa_select_by_id($ma_hh){
 //     $sql = "SELECT * FROM hang_hoa WHERE ma_hh=?";
 //     return pdo_query_one($sql, $ma_hh);
 // }
->>>>>>> 5aaec78ab1a184ec675d04bd478700e6e7834a55
 
 // function hang_hoa_exist($ma_hh){
 //     $sql = "SELECT count(*) FROM hang_hoa WHERE ma_hh=?";
