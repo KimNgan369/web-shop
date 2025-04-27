@@ -24,7 +24,6 @@
         
         // Cập nhật mã HTML để hiển thị tên danh mục và hình ảnh động
         $html_danhmucsp .= '  <!-- ' . htmlspecialchars($name) . ' -->
-<<<<<<< HEAD
             <div class="col-md-3 mb-4 text-center">
                 <div class="category-card">
                     <a href="view/rings.php?type=' . urlencode($name) . '">
@@ -38,14 +37,6 @@
                 </p>
             </div>';
     
-=======
-                                <div class="col-md-3 mb-4 text-center">
-                                    <div class="category-card">
-                                        <img src="layout/img/' . $image . '" class="img-fluid" alt="' . htmlspecialchars($name) . '">
-                                    </div>
-                                    <p class="fw-bold">' . htmlspecialchars($name) . '</p>
-                                </div>';
->>>>>>> 5aaec78ab1a184ec675d04bd478700e6e7834a55
     }
     
 ?>

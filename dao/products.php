@@ -75,7 +75,6 @@ function get_dssp($limi, $filtered_price = [], $filtered_material = [], $filtere
     return pdo_query($sql);  // Thực thi truy vấn
 }
 
-<<<<<<< HEAD
 function get_products_by_category_id($category_id) {
     $sql = "SELECT * FROM products WHERE category_id = ?";
     return pdo_query($sql, $category_id);
@@ -121,14 +120,6 @@ function get_sp_by_id($id){
     $sql = "SELECT * FROM sanpham WHERE id=?";
     return pdo_query_one($sql, $id);
 } 
-=======
-
-
-// function hang_hoa_select_by_id($ma_hh){
-//     $sql = "SELECT * FROM hang_hoa WHERE ma_hh=?";
-//     return pdo_query_one($sql, $ma_hh);
-// }
->>>>>>> 5aaec78ab1a184ec675d04bd478700e6e7834a55
 
 // function hang_hoa_exist($ma_hh){
 //     $sql = "SELECT count(*) FROM hang_hoa WHERE ma_hh=?";
