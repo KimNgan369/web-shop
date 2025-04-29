@@ -1,35 +1,46 @@
 <?php
 require_once 'pdo.php';
 
-// function hang_hoa_insert($ten_hh, $don_gia, $giam_gia, $hinh, $ma_loai, $dac_biet, $so_luot_xem, $ngay_nhap, $mo_ta){
-//     $sql = "INSERT INTO hang_hoa(ten_hh, don_gia, giam_gia, hinh, ma_loai, dac_biet, so_luot_xem, ngay_nhap, mo_ta) VALUES (?,?,?,?,?,?,?,?,?)";
-//     pdo_execute($sql, $ten_hh, $don_gia, $giam_gia, $hinh, $ma_loai, $dac_biet==1, $so_luot_xem, $ngay_nhap, $mo_ta);
-// }
+function sanpham_insert($name, $price, $category_id, $description, $material, $style, $image){
+    $sql = "INSERT INTO products(name, price, category_id, description, material, style, image) VALUES (?,?,?,?,?,?,?)";
+    pdo_execute($sql, $name, $price, $category_id, $description, $material, $style, $image);
+}
 
-// function hang_hoa_update($ma_hh, $ten_hh, $don_gia, $giam_gia, $hinh, $ma_loai, $dac_biet, $so_luot_xem, $ngay_nhap, $mo_ta){
-//     $sql = "UPDATE hang_hoa SET ten_hh=?,don_gia=?,giam_gia=?,hinh=?,ma_loai=?,dac_biet=?,so_luot_xem=?,ngay_nhap=?,mo_ta=? WHERE ma_hh=?";
-//     pdo_execute($sql, $ten_hh, $don_gia, $giam_gia, $hinh, $ma_loai, $dac_biet==1, $so_luot_xem, $ngay_nhap, $mo_ta, $ma_hh);
-// }
+function sanpham_update($name, $price, $category_id, $description, $material, $style, $image, $id){
+    if($image!="") {
+        $sql = "UPDATE products SET name=?,price=?,category_id=?,description=?,material=?,style=?,image=? where id=?";
+    pdo_execute($sql, $name, $price, $category_id, $description, $material, $style, $image, $id);
+    } else {
+        $sql = "UPDATE products SET name=?,price=?,category_id=?,description=?,material=?,style=? where id=?";
+    pdo_execute($sql, $name, $price, $category_id, $description, $material, $style, $id);
+    }
+    
+}
 
-// function hang_hoa_delete($ma_hh){
-//     $sql = "DELETE FROM hang_hoa WHERE  ma_hh=?";
-//     if(is_array($ma_hh)){
-//         foreach ($ma_hh as $ma) {
-//             pdo_execute($sql, $ma);
-//         }
-//     }
-//     else{
-//         pdo_execute($sql, $ma_hh);
-//     }
-// }
+function sanpham_delete($id){
+     $sql = "DELETE FROM products WHERE  id=?";
+    // if(is_array($ma_hh)){
+    //     foreach ($ma_hh as $ma) {
+    //         pdo_execute($sql, $ma);
+    //     }
+    // }
+    // else{
+         pdo_execute($sql, $id);
+    // }
+}
 
-
+function get_img($id) {
+    $sql = "SELECT * FROM products WHERE id=?";
+    $getimg = pdo_query_one($sql,$id);
+    return $getimg['image'];
+}
 
 function get_danhmucsp() {
     $sql = "SELECT * FROM categories";  // Truy vấn lấy các danh mục
     return pdo_query($sql);  // Trả về kết quả từ truy vấn
     //hihihihihi dung ne
 }
+
 
 
 function get_bestselling($limi) {
@@ -59,23 +70,21 @@ function get_dssp($limi, $filtered_price = [], $filtered_material = [], $filtere
         $sql .= " AND (" . implode(" OR ", $price_conditions) . ")";
     }
 
-    // Lọc theo vật liệu
-    if (!empty($filtered_material)) {
-        $sql .= " AND material IN ('" . implode("','", $filtered_material) . "')";
-    }
+        // Lọc theo vật liệu (đã thay đổi giá trị)
+        if (!empty($filtered_material)) {
+            $sql .= " AND material IN ('" . implode("','", $filtered_material) . "')";
+        }
 
-    // Lọc theo phong cách
-    if (!empty($filtered_style)) {
-        $sql .= " AND style IN ('" . implode("','", $filtered_style) . "')";
-    }
+        // Lọc theo phong cách (đã thay đổi giá trị)
+        if (!empty($filtered_style)) {
+            $sql .= " AND style IN ('" . implode("','", $filtered_style) . "')";
+        }
 
-    // Thêm sắp xếp và giới hạn
-    $sql .= " ORDER BY id DESC LIMIT " . $limi;
-
-    return pdo_query($sql);  // Thực thi truy vấn
+        $sql .= " ORDER BY id DESC LIMIT " . $limi;
+        return pdo_query($sql);
 }
 
-<<<<<<< HEAD
+
 function get_products_by_category_id($category_id) {
     $sql = "SELECT * FROM products WHERE category_id = ?";
     return pdo_query($sql, $category_id);
@@ -118,17 +127,31 @@ function get_products_filtered_by_category($category_id, $price_arr, $material_a
 
 
 function get_sp_by_id($id){
-    $sql = "SELECT * FROM sanpham WHERE id=?";
+    $sql = "SELECT * FROM products WHERE id=?";
     return pdo_query_one($sql, $id);
 } 
-=======
+
+//admin
+function get_spadmin() {
+    $sql = "SELECT products.*, categories.name as category_name 
+            FROM products 
+            JOIN categories ON products.category_id = categories.id
+            ORDER BY products.id ASC";  
+    return pdo_query($sql);  
+}
+
+function get_danhmucadmin() {
+    $sql = "SELECT * FROM categories";  // Truy vấn lấy các danh mục
+    return pdo_query($sql);
+}
+
 
 
 // function hang_hoa_select_by_id($ma_hh){
 //     $sql = "SELECT * FROM hang_hoa WHERE ma_hh=?";
 //     return pdo_query_one($sql, $ma_hh);
 // }
->>>>>>> 5aaec78ab1a184ec675d04bd478700e6e7834a55
+
 
 // function hang_hoa_exist($ma_hh){
 //     $sql = "SELECT count(*) FROM hang_hoa WHERE ma_hh=?";

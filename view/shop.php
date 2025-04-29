@@ -1,8 +1,6 @@
 <?php
-<<<<<<< HEAD
-include "../dao/products.php";
-=======
->>>>>>> 5aaec78ab1a184ec675d04bd478700e6e7834a55
+
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Nhận các bộ lọc từ form POST
     $filtered_price = isset($_POST['price']) ? $_POST['price'] : [];
@@ -240,7 +238,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <a href="#" class="active">1</a>
                     <a href="#">2</a>
                     <a href="#">3</a>
-                    <a href="#">›</a>
+                    <a href="#">></a>
                 </div>
             </section>
         </div>

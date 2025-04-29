@@ -1,5 +1,5 @@
 <?php
-include "header.php";
+
 include "../dao/products.php";
 
 $type = $_GET['type'] ?? null;
@@ -136,6 +136,6 @@ if ($type) {
 <!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../js/Rings.js"></script>
-<?php include "footer.php"; ?>
+
 </body>
 </html>

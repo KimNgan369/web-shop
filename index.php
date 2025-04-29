@@ -21,15 +21,14 @@ if (!isset($_GET['pg'])) {
         case 'gioithieu':
             include "view/gioithieu.php";
             break;
-<<<<<<< HEAD
-            case 'rings':
-                $dssp=get_dssp(6);
-                $spchitiet='';
-                $splienquan='';
-                include "view/rings.php";
-                break;
-=======
->>>>>>> 5aaec78ab1a184ec675d04bd478700e6e7834a55
+
+        case 'rings':
+            $dssp=get_dssp(6);
+            $spchitiet='';
+            $splienquan='';
+            include "view/rings.php";
+            break;
+
         default:
             include "view/home.php";
             break;
@@ -38,7 +37,4 @@ if (!isset($_GET['pg'])) {
 
 include "view/footer.php";
 ?>
-<<<<<<< HEAD
-=======
 
->>>>>>> 5aaec78ab1a184ec675d04bd478700e6e7834a55

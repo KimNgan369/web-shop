@@ -14,3 +14,18 @@ function showSection(sectionId, element) {
     menuItems.forEach(item => item.classList.remove('active'));
     element.classList.add('active');
   }
+  function updateFileName() {
+    const fileInput = document.getElementById('productImage');
+    const fileLabel = document.querySelector('.custom-file-label');
+
+    if (fileInput.files.length > 0) {
+        // Lấy tên của tệp đã chọn
+        const fileName = fileInput.files[0].name;
+
+        // Cập nhật tên tệp vào label
+        fileLabel.textContent = fileName;
+    } else {
+        // Nếu không có tệp nào được chọn, hiển thị dòng chữ mặc định
+        fileLabel.textContent = "Chưa có tệp nào được chọn";
+    }
+}

@@ -162,9 +162,12 @@
     color: #191919;
     border: none;
     padding: 8px 16px;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
     margin-bottom: 15px;
+    text-decoration: none; 
+    display: inline-block;
+    
   }
   .product-management .button-add:hover {
     background-color: #191919;
@@ -193,6 +196,9 @@
     border-radius: 3px;
     cursor: pointer;
     margin-right: 5px;
+    text-decoration: none;     /* Bỏ gạch chân */
+    display: inline-block;     /* Giúp padding hoạt động đúng */
+    font-size: 14px;           /* Chỉnh lại nếu bị to quá */
   }
   .edit-btn:hover,
   .delete-btn:hover {
@@ -317,4 +323,129 @@
       grid-template-columns: 1fr;
     }
   }
-  
+
+  /* Định dạng cho sanphamadd*/
+/* Định dạng cho form */
+.add-product .main-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Định dạng các label */
+.add-product .form-group label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+/* Định dạng các input và select */
+.add-product .form-control,
+.add-product .form-select,
+.add-product .custom-file-input {
+  height: 40px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #e0a800; /* Màu vàng nhạt cho viền */
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+/* Định dạng cho input group (Giá) */
+.add-product .input-group-text {
+  background-color: #fff3cd; /* Màu nền vàng nhạt */
+  border: 1px solid #e0a800; /* Màu vàng cho viền */
+  border-radius: 4px 0 0 4px;
+  padding: 8px 12px;
+}
+
+/* Định dạng cho nút submit */
+.add-product .btn {
+  background-color: #e0a800; /* Màu vàng làm màu chủ đạo */
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-product .btn:hover {
+  background-color: #d18900; /* Màu vàng tối hơn khi hover */
+}
+
+/* Định dạng cho file input */
+.add-product .custom-file {
+  position: relative;
+  width: 100%;
+}
+
+.add-product .custom-file-input {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #e0a800; /* Màu vàng cho viền */
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Cải thiện căn chỉnh các phần trong form */
+.add-product .form-group {
+  margin-bottom: 20px;
+}
+
+/* Giới hạn chiều cao cho file input */
+.add-product .custom-file input[type="file"] {
+  padding-left: 10px;
+  padding-top: 5px;
+}
+
+/* Thêm khoảng cách cho các phần tử */
+.add-product .form-group {
+  margin-bottom: 20px;
+}
+
+/* Container cho file input */
+.add-product .custom-file-container {
+  width: 100%;
+  position: relative;
+}
+
+/* Cập nhật kiểu input file để nó không nằm trong khung */
+.add-product .custom-file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Làm rộng input file chiếm hết chiều rộng */
+  height: 100%; /* Làm cho input file có chiều cao bằng container */
+  opacity: 0; /* Ẩn phần input file */
+  cursor: pointer; /* Con trỏ chuột thay đổi khi hover */
+}
+
+/* Cập nhật kiểu label để nó nằm ngoài khung */
+.add-product .custom-file-label {
+  display: inline-block;
+  padding: 10px;
+
+  color: #fff;
+  border: 1px solid #e0a800;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  width: 100%; /* Đảm bảo label chiếm hết chiều rộng của container */
+  text-align: center; /* Căn giữa chữ trong label */
+}
+
+/* Khi hover label */
+.add-product .custom-file-label:hover {
+  background-color: #d18900;
+}
