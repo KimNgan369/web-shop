@@ -1,5 +1,6 @@
 <?php
 
+include_once "dao/products.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Nhận các bộ lọc từ form POST

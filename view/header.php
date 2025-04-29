@@ -24,27 +24,31 @@
     <nav class="navbar navbar-light fixed-top">
         <div class="container">
         <div class="logo-container">
-
         <img src="<?= (basename($_SERVER['PHP_SELF']) == 'rings.php' ? '../' : '') ?>layout/img/LOGO.png"
             alt="MYTH"
             class="logo"
             style="width: 50px; height: 50px; object-fit: contain;">
 
+
             <img src="layout/img/LOGO.png" alt="MYTH" class="logo">
+
 
             <span class="brand-name">MYTH</span>
         </div>
         
         <div class="navigation-links">
             <ul>
-                <li><a href="index.php">Home</a></li>
+                <li><a href="../index.php">Home</a></li>
                 <li><a href="?pg=shop">Shop</a></li>
                 <li><a href="#">Contacts</a></li>
             </ul>
         </div>
         
         <div class="signup-container">
-            <button class="sign-up-btn">SIGN UP</button>
+            <button class="sign-up-btn">
+                <a href="sign_in.php" class="text-white text-decoration-none">SIGN UP</a>
+            </button>
+        </div>
 
             <!-- <div class="navbar-left mx-auto">
                 <img src="layout/img/logo.png" alt="MYTH Logo" width="50"> 

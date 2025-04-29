@@ -131,6 +131,7 @@ function get_sp_by_id($id){
     return pdo_query_one($sql, $id);
 } 
 
+
 //admin
 function get_spadmin() {
     $sql = "SELECT products.*, categories.name as category_name 
@@ -151,6 +152,7 @@ function get_danhmucadmin() {
 //     $sql = "SELECT * FROM hang_hoa WHERE ma_hh=?";
 //     return pdo_query_one($sql, $ma_hh);
 // }
+
 
 
 // function hang_hoa_exist($ma_hh){

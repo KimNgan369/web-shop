@@ -143,3 +143,14 @@
     width: 30px;
     height: 30px;
 }
+
+.custom-add-to-cart {
+    background-color: #ffc107;
+    color: black;
+    border: none;
+}
+
+.custom-add-to-cart:hover {
+    background-color: #e0a800; /* Vàng đậm hơn khi hover */
+    color: black;
+}

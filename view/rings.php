@@ -5,6 +5,7 @@ include "../dao/products.php";
 $type = $_GET['type'] ?? null;
 $loai = $type;
 $products = [];
+$searchKeyword = $_GET['keyword'] ?? '';
 
 if ($type) {
     $sql = "SELECT id FROM categories WHERE name = ?";
@@ -42,6 +43,12 @@ if ($type) {
             $params = array_merge($params, $_GET['style']);
         }
 
+        // SEARCH KEYWORD
+        if (!empty($searchKeyword)) {
+            $sql .= " AND name LIKE ?";
+            $params[] = '%' . $searchKeyword . '%';
+        }
+
         $products = pdo_query($sql, ...$params);
     }
 }
@@ -58,11 +65,18 @@ if ($type) {
     <link rel="stylesheet" href="../layout/css/Rings.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        .filter-section button {
+            display: none;
+        }
+    </style>
 </head>
 <body style="padding-top: 40px;">
 
 <div class="container mt-4">
-    <h2 class="text-center mt-5 mb-3" style="font-family: 'Poppins', serif; margin-top: 250px;"><?= htmlspecialchars($loai) ?></h2>
+    <h2 class="text-center mt-5 mb-3" style="font-family: 'Poppins', serif; margin-top: 250px;">
+        <?= htmlspecialchars($loai) ?>
+    </h2>
     <div class="breadcrumb">
         <a href="../shop.php">Shop</a> > <span><?= htmlspecialchars($loai) ?></span>
     </div>
@@ -74,6 +88,11 @@ if ($type) {
                 <input type="hidden" name="type" value="<?= htmlspecialchars($type) ?>">
 
                 <h5 style="font-family: 'Poppins'">Filters</h5>
+
+                <!-- Search Box -->
+                <div class="mb-3">
+                    <input type="text" name="keyword" class="form-control" placeholder="Search product..." value="<?= htmlspecialchars($searchKeyword) ?>">
+                </div>
 
                 <p><strong>Prices</strong></p>
                 <?php
@@ -120,13 +139,13 @@ if ($type) {
                                 <div class="card-body">
                                     <h5 class="card-title"><?= htmlspecialchars($name) ?></h5>
                                     <p class="card-text text-muted">Price: $<?= htmlspecialchars($price) ?></p>
-                                    <a href="#" class="btn btn-warning w-100">View More</a>
+                                    <a href="ring_detail.php?id=<?= $id ?>" class="btn btn-warning w-100">View More</a>
                                 </div>
                             </div>
                         </div>
                     <?php }
                 } else { ?>
-                    <p>No products found in this category.</p>
+                    <p>No products found matching your criteria.</p>
                 <?php } ?>
             </div>
         </div>
@@ -136,6 +155,25 @@ if ($type) {
 <!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../js/Rings.js"></script>
+
+
+<!-- Script tự động submit form khi chọn filter -->
+<script>
+    document.querySelectorAll('.filter-section input[type="checkbox"]').forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            this.form.submit();
+        });
+    });
+
+    // Tự động submit form khi search
+    document.querySelector('.filter-section input[name="keyword"]').addEventListener('keyup', function(e) {
+        if (e.key === 'Enter') {
+            this.form.submit();
+        }
+    });
+</script>
+
+<?php include "footer.php"; ?>
 
 </body>
 </html>
