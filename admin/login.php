@@ -90,9 +90,9 @@ if(isset($_POST['dangnhap'])) {
         </div>
         
         <div class="social-login"> 
-            <button type="button" class="btn btn-outline-primary w-100 mb-3 rounded-pill">  
+            <!-- <button type="button" class="btn btn-outline-primary w-100 mb-3 rounded-pill">  
                 <i class="bi bi-facebook me-2"></i> Log in with Facebook 
-            </button> 
+            </button>  -->
             <button type="button" class="btn btn-outline-danger w-100 mb-3 rounded-pill">  
                 <i class="bi bi-google me-2"></i> Log in with Google 
             </button> 
@@ -113,13 +113,13 @@ if(isset($_POST['dangnhap'])) {
                 <label class="form-label">Password</label> 
                 <input type="password" name="pass" class="form-control" placeholder="Enter your password" required> 
             </div> 
-            <div class="d-flex justify-content-between mb-3"> 
+            <!-- <div class="d-flex justify-content-between mb-3"> 
                 <div> 
                     <input type="checkbox" name="remember" id="remember">
                     <label for="remember">Remember me</label> 
                 </div> 
                 <a href="reset_password.php">Forget your password?</a> 
-            </div> 
+            </div>  -->
             <button type="submit" name="dangnhap" value="1" class="btn btn-primary w-100">Log in</button> 
 
             <?php if (!empty($error)): ?>

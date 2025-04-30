@@ -47,67 +47,20 @@
 
     <!-- Phan Thu Hut -->
     <section class="hero-section">
-        <h1 style="color: rgb(255, 255, 255);">Welcome to the mythical store!</h1> <!-- Tieu de trang chu -->
+    <div style="background-color:rgb(254, 254, 254, 0.8); padding: 15px; border-radius: 30px;">
+        <h1 style="color:#000000; text-align: center;">Welcome to the mythical store!</h1> <!-- Tiêu đề trang chủ -->
+    </div>
         
         <!-- O tim kiem -->
-        <div class="search-bar mt-3">
-            <input type="text" class="form-control" placeholder="What are you looking for?"> <!-- O nhap noi dung tim kiem -->
-            <button class="btn btn-warning"><i class="bi bi-search"></i></button> <!-- Nut tim kiem -->
-        </div>
+        <!-- <div class="search-bar mt-3"> -->
+            <!-- <input type="text" class="form-control" placeholder="What are you looking for?">  -->
+            <!-- O nhap noi dung tim kiem -->
+            <!-- <button class="btn btn-warning"><i class="bi bi-search"></i></button>  -->
+            <!-- Nut tim kiem -->
+        <!-- </div> -->
     </section>
 
-<!-- Muc ban chay nhat -->
-<section class="container my-5">
-        <div class="row">
-            <div class="col-md-3 d-flex flex-column justify-content-center">
-                <h3 class="fw-bold">Best Selling Rings</h3> <!-- Tieu de danh muc -->
-                <p><span class="text-muted"> The easiest way to exude charisma is to buy jewelry that you love.</p> <!-- Mo ta danh muc -->
-                <button class="btn btn-warning">See more →</button> <!-- Nut xem them -->
-            </div>
-            <div class="col-md-9">
-                <div class="row">
 
-                    <?=$html_bestsell;?>
-                    <!-- San pham Poseidon TRIDON -->
-                    <!-- <div class="col-md-4 mb-4">
-                        <div class="card custom-card">
-                            <img src="layout/img/poseidon.png" class="card-img-top" alt="Poseidon TRIDON"> 
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold">Poseidon ‘TRIDON’</h5> 
-                                <p class="text-muted">Price: 100$</p> 
-                                <a href="#" class="text-decoration-none">Explore Now! →</a> 
-                            </div>
-                        </div>
-                    </div> -->
-                    
-                    <!-- San pham Zeus THUNDER -->
-                    <!-- <div class="col-md-4 mb-4">
-                        <div class="card custom-card">
-                            <img src="layout/img/zeus.png" class="card-img-top" alt="Zeus THUNDER">
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold">Zeus ‘THUNDER’</h5>
-                                <p class="text-muted">Price: 100$</p>
-                                <a href="#" class="text-decoration-none">Explore Now! →</a>
-                            </div>
-                        </div>
-                    </div> -->
-                    
-                    <!-- San pham Hermes CADUCEUS -->
-                    <!-- <div class="col-md-4 mb-4">
-                        <div class="card custom-card">
-                            <img src="layout/img/hermes.png" class="card-img-top" alt="Hermes CADUCEUS">
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold">Hermes ‘CADUCEUS’</h5>
-                                <p class="text-muted">Price: 100$</p>
-                                <a href="#" class="text-decoration-none">Explore Now! →</a>
-                            </div>
-                        </div>
-                    </div> -->
-
-                </div>
-            </div>
-        </div>
-    </section>
 
     <section class="container my-5">
         <div class="row">
@@ -165,7 +118,58 @@
         </div>
     </section>
 
-   
+   <!-- Muc ban chay nhat -->
+<section class="container my-5">
+        <div class="row">
+            <div class="col-md-3 d-flex flex-column justify-content-center">
+                <h3 class="fw-bold">Best Selling Rings</h3> <!-- Tieu de danh muc -->
+                <p><span class="text-muted"> The easiest way to exude charisma is to buy jewelry that you love.</p> <!-- Mo ta danh muc -->
+                <!-- <button class="btn btn-warning">See more →</button> Nut xem them -->
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+
+                    <?=$html_bestsell;?>
+                    <!-- San pham Poseidon TRIDON -->
+                    <!-- <div class="col-md-4 mb-4">
+                        <div class="card custom-card">
+                            <img src="layout/img/poseidon.png" class="card-img-top" alt="Poseidon TRIDON"> 
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Poseidon ‘TRIDON’</h5> 
+                                <p class="text-muted">Price: 100$</p> 
+                                <a href="#" class="text-decoration-none">Explore Now! →</a> 
+                            </div>
+                        </div>
+                    </div> -->
+                    
+                    <!-- San pham Zeus THUNDER -->
+                    <!-- <div class="col-md-4 mb-4">
+                        <div class="card custom-card">
+                            <img src="layout/img/zeus.png" class="card-img-top" alt="Zeus THUNDER">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Zeus ‘THUNDER’</h5>
+                                <p class="text-muted">Price: 100$</p>
+                                <a href="#" class="text-decoration-none">Explore Now! →</a>
+                            </div>
+                        </div>
+                    </div> -->
+                    
+                    <!-- San pham Hermes CADUCEUS -->
+                    <!-- <div class="col-md-4 mb-4">
+                        <div class="card custom-card">
+                            <img src="layout/img/hermes.png" class="card-img-top" alt="Hermes CADUCEUS">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Hermes ‘CADUCEUS’</h5>
+                                <p class="text-muted">Price: 100$</p>
+                                <a href="#" class="text-decoration-none">Explore Now! →</a>
+                            </div>
+                        </div>
+                    </div> -->
+
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Huong dan chon nhan -->
     <div class="container my-5"> <!-- Khoi chua phan huong dan chon nhan -->
