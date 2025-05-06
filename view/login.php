@@ -47,11 +47,11 @@
             <h4>Log in</h4>
             <p>Don't have an account? <a href="index.php?pg=signup">Sign up</a></p>
         </div>
-        <div class="social-login">
+        <!-- <div class="social-login">
             <button class="btn btn-outline-danger w-100 mb-3 rounded-pill"> 
                 <i class="bi bi-google me-2"></i> Log in with Google
             </button>
-        </div>
+        </div> -->
         <div class="d-flex align-items-center my-2">
             <hr class="flex-grow-1">
             <span class="mx-2">OR</span>
@@ -78,8 +78,17 @@
                 <label class="form-label">Your password</label>
                 <input type="password" class="form-control" placeholder="Enter your password" name="password" required>
             </div>
+            <!-- <div class="d-flex justify-content-between">
+                <a href="#">Forget your password?</a>
+            </div> -->
             <div class="row">
                 <input type="submit" class="btn btn-secondary w-100 mt-3" name="login" value="Đăng nhập">
+            </div>
+
+            <div class="text-center mt-4">
+            <button class="btn btn-outline-warning border-dark">
+                <a href="index.php" class="text-black text-decoration-none">Về trang chủ</a>
+            </button>
             </div>
         </form>
         

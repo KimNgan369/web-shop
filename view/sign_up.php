@@ -47,9 +47,9 @@
                     </div>
                 <?php endif; ?>
 
-                <button class="btn btn-outline-secondary w-100 mb-3 d-flex align-items-center justify-content-center rounded-pill btn-google">
+                <!-- <button class="btn btn-outline-secondary w-100 mb-3 d-flex align-items-center justify-content-center rounded-pill btn-google">
                     <i class="fab fa-google text-danger me-2"></i> Continue with Google
-                </button>
+                </button> -->
                 <div class="d-flex align-items-center my-4">
                     <hr class="flex-grow-1">
                     <span class="px-3 text-muted">OR</span>
@@ -78,6 +78,13 @@
                 </div>
 
                 <input type="submit" name="signup" class="btn btn-secondary w-100 mb-3 rounded-pill" value="Sign Up">
+
+                <div class="text-center mt-4">
+                <button class="btn btn-outline-warning border-dark">
+                    <a href="index.php" class="text-black text-decoration-none">Về trang chủ</a>
+                </button>
+                </div>
+
                 </form>
             </div>
         </div>

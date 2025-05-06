@@ -30,7 +30,6 @@ if (!isset($_GET['pg'])) {
             break;
 
         case 'signup':
-            // Không include header/footer
             include "view/sign_up.php";
             break;
 
@@ -39,14 +38,6 @@ if (!isset($_GET['pg'])) {
             include "view/gioithieu.php";
             include "view/footer.php";
             break;
-
-        // case 'rings':
-        //     $dssp=get_dssp(6);
-        //     $spchitiet='';
-        //     $splienquan='';
-        //     include "view/rings.php";
-        //     break;
-
 
         case 'rings':
             $dssp = get_dssp(6);
@@ -72,19 +63,16 @@ if (!isset($_GET['pg'])) {
             }
             break;
 
-        
         case 'adduser':
             if (isset($_POST["signup"]) && ($_POST["signup"])) {
                 $username = $_POST["username"];
                 $password = $_POST["password"];
                 $email = $_POST["email"];
         
-                // Kiểm tra username
                 if (user_exist($username)) {
                     $error = "Tên đăng nhập '$username' đã tồn tại. Vui lòng chọn tên khác.";
                     include "view/sign_up.php";
                 }
-                // Kiểm tra email
                 elseif (email_exist($email)) {
                     $error = "Email '$email' đã được sử dụng. Vui lòng dùng email khác.";
                     include "view/sign_up.php";
@@ -95,18 +83,30 @@ if (!isset($_GET['pg'])) {
             }
             break;
         
+        case 'updateuser':
+            if (isset($_POST["update"]) && ($_POST["update"])) {
+                $username = $_POST["username"];
+                $password = $_POST["password"];
+                $email = $_POST["email"];
+                $address = $_POST["address"];
+                $phone = $_POST["phone"];
+                $id = $_POST["id"];
+                $role = 0;
+                user_update($username, $password, $email, $address, $phone, $role, $id);
+                include "view/myacc_confirm.php";
+            }
+            break;
+            
         case 'login':
-            // input
             if (isset($_POST["login"]) && ($_POST["login"])) {
                 $email = $_POST["email"];
                 $password = $_POST["password"];
                 
-                // xl: kiem tra
                 $kq = checkuser($email, $password);
         
                 if (is_array($kq) && count($kq)) {
                     $_SESSION['s_user'] = $kq;
-                    unset($_SESSION['tb_dangnhap']); // Xóa thông báo lỗi nếu đăng nhập thành công
+                    unset($_SESSION['tb_dangnhap']); 
                     header('location: index.php');
                 } else {
                     $tb = "Email hoặc mật khẩu không đúng!";
@@ -130,9 +130,53 @@ if (!isset($_GET['pg'])) {
         case 'myacc':
             if (isset($_SESSION['s_user']) && (count($_SESSION['s_user']) > 0)) {
                 include "view/myacc.php";
+            } else {
+                header('location: index.php?pg=dangnhap');
             }
             break;
             
+        case 'changepassword_form':
+            if (isset($_SESSION['s_user']) && (count($_SESSION['s_user']) > 0)) {
+                include "view/change_password.php";
+            } else {
+                header('location: index.php?pg=dangnhap');
+            }
+            break;
+            
+        case 'changepassword':
+            if (isset($_POST["change_password"]) && ($_POST["change_password"])) {
+                $current_password = $_POST["current_password"];
+                $new_password = $_POST["new_password"];
+                $confirm_password = $_POST["confirm_password"];
+                $user_id = $_POST["id"];
+                
+                if (!verify_current_password($user_id, $current_password)) {
+                    $_SESSION['password_error'] = "Mật khẩu hiện tại không đúng";
+                    header('location: index.php?pg=changepassword_form');
+                    exit();
+                }
+                
+                if ($new_password !== $confirm_password) {
+                    $_SESSION['password_error'] = "Mật khẩu mới và xác nhận mật khẩu không khớp";
+                    header('location: index.php?pg=changepassword_form');
+                    exit();
+                }
+                
+                user_change_password($user_id, $new_password);
+                
+                $_SESSION['s_user']['password'] = $new_password;
+                
+                include "view/password_changed.php";
+            }
+            break;
+            
+        case 'updateinfo':
+            if (isset($_SESSION['s_user']) && (count($_SESSION['s_user']) > 0)) {
+                include "view/updateinfo.php";
+            } else {
+                header('location: index.php?pg=dangnhap');
+            }
+            break;
 
         default:
             include "view/header.php";
@@ -142,4 +186,3 @@ if (!isset($_GET['pg'])) {
     }
 }
 ?>
-

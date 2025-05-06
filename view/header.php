@@ -15,7 +15,7 @@ if (isset($_SESSION['s_user']) && (count($_SESSION['s_user']) > 0)) {
             <button class="sign-up-btn">
                 <a href="?pg=signup" class="text-white text-decoration-none">SIGN UP</a>
             </button>
-            <button class="btn btn-outline-dark border-dark">
+            <button class="btn btn-outline-warning border-dark">
                 <a href="?pg=dangnhap" class="text-black text-decoration-none">LOGIN</a>
             </button>
         </div>';
