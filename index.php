@@ -4,8 +4,10 @@ session_start();
 include "dao/pdo.php";
 include "dao/products.php";
 include "dao/user.php";
+include "view/header.php";
 
-// Data chung cho các trang
+// Data cho trang chủ 
+
 $bestsell = get_bestselling(3);
 $danhmucsp = get_danhmucsp();
 
@@ -40,6 +42,7 @@ if (!isset($_GET['pg'])) {
             include "view/footer.php";
             break;
 
+
         // case 'rings':
         //     $dssp=get_dssp(6);
         //     $spchitiet='';
@@ -57,6 +60,15 @@ if (!isset($_GET['pg'])) {
             include "view/footer.php";
             break;
 
+
+        case 'rings':
+            $dssp=get_dssp(6);
+            $spchitiet='';
+            $splienquan='';
+            include "view/rings.php";
+            break;
+
+
         case 'ring_detail':
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $id = $_GET['id'];
@@ -70,7 +82,42 @@ if (!isset($_GET['pg'])) {
                 echo "<h2 class='text-center my-5'>Không tìm thấy sản phẩm.</h2>";
                 include "view/footer.php";
             }
+           
+            include "view/ring_detail.php";
             break;
+        
+        case 'shoppingcart':
+            session_start();
+            
+            if (isset($_POST['addToCart'])) {
+                if (!isset($_SESSION['cart'])) {
+                    $_SESSION['cart'] = [];
+                }
+                
+                $product_id = (int)$_POST['id'];
+                
+                
+                if (isset($_SESSION['cart'][$product_id])) {
+                    $_SESSION['cart'][$product_id]['quantity'] += (int)$_POST['quantity'];
+                } else {
+                    $_SESSION['cart'][$product_id] = [
+                        'id' => $product_id,
+                        'name' => $_POST['name'],
+                        'price' => (float)$_POST['price'],
+                        'quantity' => (int)$_POST['quantity'],
+                        'image' => $_POST['image']
+                    ];
+                }
+                
+                
+                // Chuyển hướng để tránh submit lại
+                header("Location: <?= $base_url ?>/shoppingcart.php");
+                exit();
+            }
+            
+            include "view/shoppingcart.php";
+            break;
+
 
         
         case 'adduser':
@@ -134,12 +181,21 @@ if (!isset($_GET['pg'])) {
             break;
             
 
+        case 'checkout':
+            include "view/checkout.php";
+            break;
+
+        case 'ordercomplete':
+            include "view/ordercomplete.php";
+            break;
+
+            
         default:
             include "view/header.php";
             include "view/home.php";
             include "view/footer.php";
             break;
-    }
+}
 }
 ?>
 
