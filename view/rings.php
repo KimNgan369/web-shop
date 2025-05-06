@@ -78,7 +78,7 @@ if ($type) {
         <?= htmlspecialchars($loai) ?>
     </h2>
     <div class="breadcrumb">
-        <a href="../shop.php">Shop</a> > <span><?= htmlspecialchars($loai) ?></span>
+        <a href="../index.php?pg=shop">Shop</a> > <span><?= htmlspecialchars($loai) ?></span>
     </div>
 
     <div class="row">
@@ -173,7 +173,7 @@ if ($type) {
     });
 </script>
 
-<?php include "footer.php"; ?>
+
 
 </body>
 </html>

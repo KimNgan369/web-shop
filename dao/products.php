@@ -57,8 +57,13 @@ function get_bestselling($limi) {
     return pdo_query($sql);
 }
 
-function get_dssp($limi, $filtered_price = [], $filtered_material = [], $filtered_style = []) {
+function get_dssp($limi, $filtered_price = [], $filtered_material = [], $filtered_style = [], $keyword = '') {
     $sql = "SELECT * FROM products WHERE 1"; 
+
+    // Lọc theo keyword
+    if (!empty($keyword)) {
+        $sql .= " AND name LIKE '%" . $keyword . "%'";
+    }
 
     // Lọc theo giá
     if (!empty($filtered_price)) {
@@ -70,18 +75,18 @@ function get_dssp($limi, $filtered_price = [], $filtered_material = [], $filtere
         $sql .= " AND (" . implode(" OR ", $price_conditions) . ")";
     }
 
-        // Lọc theo vật liệu (đã thay đổi giá trị)
-        if (!empty($filtered_material)) {
-            $sql .= " AND material IN ('" . implode("','", $filtered_material) . "')";
-        }
+    // Lọc theo vật liệu
+    if (!empty($filtered_material)) {
+        $sql .= " AND material IN ('" . implode("','", $filtered_material) . "')";
+    }
 
-        // Lọc theo phong cách (đã thay đổi giá trị)
-        if (!empty($filtered_style)) {
-            $sql .= " AND style IN ('" . implode("','", $filtered_style) . "')";
-        }
+    // Lọc theo phong cách
+    if (!empty($filtered_style)) {
+        $sql .= " AND style IN ('" . implode("','", $filtered_style) . "')";
+    }
 
-        $sql .= " ORDER BY id DESC LIMIT " . $limi;
-        return pdo_query($sql);
+    $sql .= " ORDER BY id DESC LIMIT " . $limi;
+    return pdo_query($sql);
 }
 
 
@@ -126,10 +131,11 @@ function get_products_filtered_by_category($category_id, $price_arr, $material_a
 
 
 
-function get_sp_by_id($id){
-    $sql = "SELECT * FROM products WHERE id=?";
-    return pdo_query_one($sql, $id);
-} 
+function get_sp_by_id($id) {
+    $sql = "SELECT * FROM products WHERE id = ?";
+    $result = pdo_query_one($sql, $id);
+    return $result ? $result : null; // Luôn trả về null thay vì false
+}
 
 
 //admin

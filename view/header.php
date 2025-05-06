@@ -54,11 +54,13 @@ if (isset($_SESSION['s_user']) && (count($_SESSION['s_user']) > 0)) {
             class="logo"
             style="width: 50px; height: 50px; object-fit: contain;">
 
+
             <span class="brand-name">MYTH</span>
         </div>
         
         <div class="navigation-links">
             <ul>
+
                 <li><a href="?pg=home">Home</a></li>
                 <li><a href="?pg=shop">Shop</a></li>
                 <li><a href="#">Contacts</a></li>
