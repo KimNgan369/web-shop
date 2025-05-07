@@ -53,6 +53,9 @@ if ($type) {
     }
 }
 ?>
+<?php include "header.php" ?>
+
+<div style="height: 50px;"></div>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -71,10 +74,10 @@ if ($type) {
         }
     </style>
 </head>
-<body style="padding-top: 40px;">
+
 
 <div class="container mt-4">
-    <h2 class="text-center mt-5 mb-3" style="font-family: 'Poppins', serif; margin-top: 250px;">
+    <h2 class="text-center mt-5 mb-3" style="font-family: 'Poppins', serif; margin-top: 400px;">
         <?= htmlspecialchars($loai) ?>
     </h2>
     <div class="breadcrumb">
@@ -173,7 +176,7 @@ if ($type) {
     });
 </script>
 
-
+<?php include "footer1.php" ?>
 
 </body>
 </html>

@@ -120,7 +120,38 @@ INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`, `price`) 
 (6, 9, 6, 2, 100.00);
 
 -- --------------------------------------------------------
+-- --------------------------------------------------------
 
+--
+-- Cấu trúc bảng cho bảng `coupons`
+--
+
+CREATE TABLE `coupons` (
+  `id` int(11) NOT NULL,
+  `code` varchar(50) NOT NULL,
+  `discount_type` enum('percent','fixed') NOT NULL,
+  `discount_value` decimal(10,2) NOT NULL,
+  `min_order` decimal(10,2) DEFAULT 0.00,
+  `start_date` datetime DEFAULT NULL,
+  `end_date` datetime DEFAULT NULL,
+  `usage_limit` int(11) DEFAULT NULL,
+  `used_count` int(11) DEFAULT 0,
+  `is_active` tinyint(1) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `coupons`
+--
+
+INSERT INTO `coupons` (`id`, `code`, `discount_type`, `discount_value`, `min_order`, `start_date`, `end_date`, `usage_limit`, `used_count`, `is_active`) VALUES
+(1, 'WELCOME10', 'percent', 10.00, 0.00, '2023-01-01 00:00:00', '2025-12-31 23:59:59', NULL, 0, 1),
+(2, 'SALE20', 'fixed', 20.00, 100.00, '2023-06-01 00:00:00', '2025-07-31 23:59:59', 100, 0, 1),
+(3, 'HOLIDAY15', 'percent', 15.00, 50.00, '2023-12-01 00:00:00', '2025-12-10 23:59:59', NULL, 0, 1),
+(4, 'OLD5OFF', 'fixed', 5.00, 0.00, '2023-01-01 00:00:00', '2025-07-15 23:59:59', NULL, 1, 0),
+(5, 'VIP30', 'percent', 30.00, 200.00, '2023-11-01 00:00:00', '2024-11-01 23:59:59', 50, 0, 1),
+(6, 'FREESHIP', 'fixed', 50.00, 0.00, '2023-09-01 00:00:00', '2024-09-01 23:59:59', NULL, 0, 1);
+
+-- --------------------------------------------------------
 --
 -- Cấu trúc bảng cho bảng `products`
 --
