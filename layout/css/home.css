@@ -1,14 +1,14 @@
 
 /* Phong cach chung */ 
 body {
-    font-family: 'Poppins', sans-serif; /* Chon font chu Arial hoac sans-serif */
+    font-family: 'Arial', sans-serif;
     background-color: #f8f9fa; /* Mau nen xam nhat cho trang web */
 }
 
 /* Thanh dieu huong */
 .navbar {
-    font-family: 'Poppins', sans-serif; /* Chon font Poppins cho thanh dieu huong */
-    display: flex; /* Su dung flexbox de can chinh noi dung */
+
+    font-family: 'Arial', sans-serif;    display: flex; /* Su dung flexbox de can chinh noi dung */
     justify-content: space-between; /* Can giua logo va nut Sign Up o hai ben */
     align-items: center; /* Can giua theo chieu doc */
     width: 100%; /* Chieu rong bang 100% man hinh */
@@ -98,8 +98,7 @@ nav ul li a {
 }
 /* Phan Thu Hut */
 .hero-section {
-    font-family: 'Poppins', sans-serif;
-    width: 1248px; /* Chieu rong */
+    font-family: 'Arial', sans-serif;    width: 1248px; /* Chieu rong */
     height: 512px; /* Chieu cao */
     max-width: 100%; /* Dam bao khong vuot qua man hinh */
     background-image: url(../img/hand_home1.png);
@@ -297,7 +296,7 @@ p.fw-bold {
     text-align: left;
     padding-left: 80px;
     margin-bottom: 100px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Arial', sans-serif;
 }
 .text-section h1 {
     font-size: 60px;

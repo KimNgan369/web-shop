@@ -38,6 +38,12 @@ if (!isset($_GET['pg'])) {
             include "view/gioithieu.php";
             include "view/footer.php";
             break;
+        
+        case 'contacts':
+            include "view/header.php";
+            include "view/contact.php";
+            include "view/footer.php";
+            break;
 
         case 'rings':
             $dssp = get_dssp(6);
