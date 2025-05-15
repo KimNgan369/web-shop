@@ -2,6 +2,7 @@
 session_start();
 include "../dao/products.php";
 include "../dao/global.php";
+include "header.php";
 
 
 $id = $_GET['id'] ?? 0;
@@ -104,6 +105,30 @@ $conn->close();
             <input type="hidden" name="quantity">
 
         </form>
+
+        <!-- Navbar -->
+<nav class="navbar navbar-light fixed-top">
+    <div class="container">
+        <div class="logo-container" onclick="window.location.href='../index.php'" style="cursor: pointer;">
+            <img src="<?= (basename($_SERVER['PHP_SELF']) == 'rings.php' ? '../' : '') ?>../layout/img/LOGO.png"
+                alt="MYTH" class="logo" style="width: 50px; height: 50px; object-fit: contain;">
+            <span class="brand-name">MYTH</span>
+        </div>
+
+        <div class="navigation-links">
+            <ul>
+                <li><a href="../index.php">Home</a></li>
+                <li><a href="?pg=shop">Shop</a></li>
+                <li><a href="#">Contacts</a></li>
+            </ul>
+        </div>
+        <div class="signup-container">
+            <button class="sign-up-btn">
+                <a href="sign_up.php" class="text-white text-decoration-none">SIGN UP</a>
+            </button>
+        </div>        
+    </div>
+</nav>
 
 <div style="margin-left: 15px; margin-top: 20px;">
     <button class="btn btn-warning text-dark" style="border-radius: 50%; width: 50px; height: 50px;" onclick="history.back()">

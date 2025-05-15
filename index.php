@@ -117,6 +117,7 @@ if (!isset($_GET['pg'])) {
             break;
         
         case 'dangnhap':
+            // header('location: view/login.php');
             include "view/login.php";
             break;
         
