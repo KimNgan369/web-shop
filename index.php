@@ -1,9 +1,9 @@
 <?php
 session_start();
 // Nhúng kết nối CSDL
-include "dao/pdo.php";
-include "dao/products.php";
-include "dao/user.php";
+include_once "dao/pdo.php";
+include_once "dao/products.php";
+include_once "dao/user.php";
 
 // Data chung cho các trang
 $bestsell = get_bestselling(3);
@@ -64,7 +64,7 @@ if (!isset($_GET['pg'])) {
                 include "view/footer.php";
             } else {
                 include "view/header.php";
-                echo "<h2 class='text-center my-5'>Không tìm thấy sản phẩm.</h2>";
+                echo "<h2 class='text-center my-5'>Product not found.</h2>";
                 include "view/footer.php";
             }
             break;
@@ -76,11 +76,10 @@ if (!isset($_GET['pg'])) {
                 $email = $_POST["email"];
         
                 if (user_exist($username)) {
-                    $error = "Tên đăng nhập '$username' đã tồn tại. Vui lòng chọn tên khác.";
+                    $error = "Username '$username' already exists. Please choose another.";
                     include "view/sign_up.php";
-                }
-                elseif (email_exist($email)) {
-                    $error = "Email '$email' đã được sử dụng. Vui lòng dùng email khác.";
+                } elseif (email_exist($email)) {
+                    $error = "Email '$email' is already in use. Please use another email.";
                     include "view/sign_up.php";
                 } else {
                     user_insert($username, $password, $email);
@@ -99,54 +98,66 @@ if (!isset($_GET['pg'])) {
                 $id = $_POST["id"];
                 $role = 0;
                 user_update($username, $password, $email, $address, $phone, $role, $id);
+                $_SESSION['s_user'] = [
+                    'id' => $id,
+                    'username' => $username,
+                    'email' => $email,
+                    'address' => $address,
+                    'phone' => $phone,
+                    'role' => $role
+                ];
                 include "view/myacc_confirm.php";
             }
             break;
             
         case 'login':
             if (isset($_POST["login"]) && ($_POST["login"])) {
-                $email = $_POST["email"];
+                $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
                 $password = $_POST["password"];
                 
                 $kq = checkuser($email, $password);
         
                 if (is_array($kq) && count($kq)) {
                     $_SESSION['s_user'] = $kq;
-                    unset($_SESSION['tb_dangnhap']); 
-                    header('location: index.php');
+                    $_SESSION['user_id'] = $kq['id']; // Lưu user_id để checkout.php sử dụng
+                    unset($_SESSION['tb_dangnhap']);
+                    header('Location: index.php');
+                    exit();
                 } else {
-                    $tb = "Email hoặc mật khẩu không đúng!";
-                    $_SESSION['tb_dangnhap'] = $tb;
-                    header('location: index.php?pg=dangnhap');
+                    $_SESSION['tb_dangnhap'] = "Invalid email or password!";
+                    header('Location: index.php?pg=dangnhap');
+                    exit();
                 }
             }
+            include "view/login.php";
             break;
         
         case 'dangnhap':
-            // header('location: view/login.php');
             include "view/login.php";
             break;
         
         case 'logout':
-            if (isset($_SESSION['s_user']) && (count($_SESSION['s_user']) > 0)) {
-                unset($_SESSION['s_user']);
-            }
-            header('location: index.php');
+            unset($_SESSION['s_user']);
+            unset($_SESSION['user_id']);
+            header('Location: index.php');
+            exit();
             break;
     
         case 'myacc':
             if (isset($_SESSION['s_user']) && (count($_SESSION['s_user']) > 0)) {
                 include "view/myacc.php";
             } else {
-                header('location: index.php?pg=dangnhap');
+                header('Location: index.php?pg=dangnhap');
+                exit();
             }
             break;
             
         case 'changepassword_form':
             if (isset($_SESSION['s_user']) && (count($_SESSION['s_user']) > 0)) {
-                include "view/change_password.php";
+                include "view/changepassword_form.php";
             } else {
-                header('location: index.php?pg=dangnhap');
+                header('Location: index.php?pg=dangnhap');
+                exit();
             }
             break;
             
@@ -158,14 +169,14 @@ if (!isset($_GET['pg'])) {
                 $user_id = $_POST["id"];
                 
                 if (!verify_current_password($user_id, $current_password)) {
-                    $_SESSION['password_error'] = "Mật khẩu hiện tại không đúng";
-                    header('location: index.php?pg=changepassword_form');
+                    $_SESSION['password_error'] = "Current password is incorrect";
+                    header('Location: index.php?pg=changepassword_form');
                     exit();
                 }
                 
                 if ($new_password !== $confirm_password) {
-                    $_SESSION['password_error'] = "Mật khẩu mới và xác nhận mật khẩu không khớp";
-                    header('location: index.php?pg=changepassword_form');
+                    $_SESSION['password_error'] = "New password and confirm password do not match";
+                    header('Location: index.php?pg=changepassword_form');
                     exit();
                 }
                 
@@ -181,7 +192,8 @@ if (!isset($_GET['pg'])) {
             if (isset($_SESSION['s_user']) && (count($_SESSION['s_user']) > 0)) {
                 include "view/updateinfo.php";
             } else {
-                header('location: index.php?pg=dangnhap');
+                header('Location: index.php?pg=dangnhap');
+                exit();
             }
             break;
 

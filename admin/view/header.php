@@ -19,8 +19,9 @@
       <li onclick="window.location.href='index.php'">Tổng quan</li>      
       <li onclick="window.location.href='index.php?act=sanphamlist'">Quản lý sản phẩm</li>
       <li onclick="window.location.href='index.php?act=manage_user'">Quản lý người dùng</li>
-      <li onclick="showSection('manage-vip', this)">Quản lý VIP</li>
-      <li onclick="showSection('manage-feedback', this)">Feedback</li>
+      <li><a href="index.php?act=manage_orders">Quản lý đơn hàng</a></li>
+      <li onclick="window.location.href='index.php?act=manage_vip'">Quản lý VIP</li>
+
       <li onclick="window.location.href='index.php?act=logout'">Logout</li>    </ul>
   </div>
 

@@ -8,156 +8,155 @@
   text-decoration: none; /* Prevent underline on hover */
 }
 
-
 /* Reset CSS cơ bản */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  body {
+}
+body {
     font-family: Arial, sans-serif;
     background-color: #FEFEFE; /* Nền chính */
     color: #191919;           /* Màu chữ chính */
     display: flex;
     min-height: 100vh;
-  }
-  /* Sidebar */
-  .sidebar {
+}
+/* Sidebar */
+.sidebar {
     width: 220px;
     background-color: #191919; /* Sidebar tối */
     color: #EAD169;           /* Chữ sidebar */
     padding: 20px;
-  }
-  .brand {
+}
+.brand {
     text-align: center;
     margin-bottom: 30px;
-  }
-  .brand h2 {
+}
+.brand h2 {
     font-size: 1.4rem;
     color: #EAD169;
-  }
-  .menu {
+}
+.menu {
     list-style: none;
-  }
-  .menu li {
+}
+.menu li {
     margin: 15px 0;
     padding: 8px;
     border-radius: 5px;
     cursor: pointer;
-  }
-  .menu li:hover,
-  .menu li.active {
+}
+.menu li:hover,
+.menu li.active {
     background-color: #EAD169; 
     color: #191919;
     transition: 0.3s;
-  }
-  /* Main Content */
-  .main-content {
+}
+/* Main Content */
+.main-content {
     flex: 1;
     padding: 20px;
-  }
-  .main-header {
+}
+.main-header {
     background-color: #FEFEFE;
     padding: 10px 0;
     border-bottom: 1px solid #ddd;
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  .main-header h1 {
+}
+.main-header h1 {
     font-size: 1.5rem;
     margin-left: 5px;
-  }
-  /* Icon tài khoản */
-  .account-icon {
+}
+/* Icon tài khoản */
+.account-icon {
     width: 24px;
     height: 24px;
     margin-right: 10px;
     cursor: pointer;
-  }
-  /* Section styles */
-  .section {
+}
+/* Section styles */
+.section {
     display: none;
-  }
-  .section.active {
+}
+.section.active {
     display: block;
-  }
-  /* Dashboard cards */
-  .dashboard-cards {
+}
+/* Dashboard cards */
+.dashboard-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     margin-top: 20px;
-  }
-  .card {
+}
+.card {
     background-color: #FFFFFF;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     padding: 20px;
     text-align: center;
-  }
-  .card h3 {
+}
+.card h3 {
     font-size: 1rem;
     margin-bottom: 10px;
     color: #191919;
-  }
-  .card p {
+}
+.card p {
     font-size: 1.5rem;
     font-weight: bold;
     color: #EAD169;
-  }
-  /* Chart section */
-  .chart-section {
+}
+/* Chart section */
+.chart-section {
     margin-top: 30px;
     background-color: #FFFFFF;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
-  .chart-section h3 {
+}
+.chart-section h3 {
     margin-bottom: 20px;
-  }
-  /* Info section */
-  .info-section {
+}
+/* Info section */
+.info-section {
     margin-top: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-  }
-  .highlight-info,
-  .task-list {
+}
+.highlight-info,
+.task-list {
     background-color: #FFFFFF;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
-  .highlight-info h3,
-  .task-list h3 {
+}
+.highlight-info h3,
+.task-list h3 {
     margin-bottom: 15px;
-  }
-  .highlight-info ul,
-  .task-list ul {
+}
+.highlight-info ul,
+.task-list ul {
     list-style: none;
-  }
-  .highlight-info li,
-  .task-list li {
+}
+.highlight-info li,
+.task-list li {
     margin: 8px 0;
     padding-left: 10px;
     position: relative;
-  }
-  .highlight-info li::before,
-  .task-list li::before {
+}
+.highlight-info li::before,
+.task-list li::before {
     content: "•";
     color: #EAD169;
     position: absolute;
     left: 0;
-  }
-  /* Quản lý sản phẩm styles */
-  .product-management {
+}
+/* Quản lý sản phẩm styles */
+.product-management {
     margin-top: 20px;
-  }
-  .product-management .button-add {
+}
+.product-management .button-add {
     background-color: #EAD169;
     color: #191919;
     border: none;
@@ -167,79 +166,84 @@
     margin-bottom: 15px;
     text-decoration: none; 
     display: inline-block;
+}
+.product-management .button-add:hover {
+    background-color: #191919;
+    color: #EAD169;
+}
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.product-table th,
+.product-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+.product-table th {
+    background-color: #EAD169;
+    color: #191919;
+}
+.edit-btn,
+.delete-btn {
+    background-color: #EAD169;
+    color: #191919;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 0 5px; /* Khoảng cách giữa các nút */
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+}
+.edit-btn:hover,
+.delete-btn:hover {
+    background-color: #191919;
+    color: #EAD169;
+}
+/* Quản lý đơn hàng styles */
+.order-management {
+    margin-top: 20px;
+}
+.order-management .product-table th.manageorder-action,
+.order-management .product-table td.manageorder-action {
+    width: 200px !important; /* Chiều rộng cố định cho cột Thao tác */
+    text-align: center; /* Căn giữa nút */
     
-  }
-  .product-management .button-add:hover {
-    background-color: #191919;
-    color: #EAD169;
-  }
-  .product-table {
+}
+.order-table {
     width: 100%;
     border-collapse: collapse;
-  }
-  .product-table th,
-  .product-table td {
+}
+.order-table th,
+.order-table td {
     padding: 10px;
     border: 1px solid #ddd;
     text-align: left;
-  }
-  .product-table th {
+}
+.order-table th {
     background-color: #EAD169;
     color: #191919;
-  }
-  .edit-btn,
-  .delete-btn {
+}
+.detail-btn {
     background-color: #EAD169;
     color: #191919;
     border: none;
     padding: 5px 10px;
     border-radius: 3px;
     cursor: pointer;
-    margin-right: 5px;
-    text-decoration: none;     /* Bỏ gạch chân */
-    display: inline-block;     /* Giúp padding hoạt động đúng */
-    font-size: 14px;           /* Chỉnh lại nếu bị to quá */
-  }
-  .edit-btn:hover,
-  .delete-btn:hover {
+}
+.detail-btn:hover {
     background-color: #191919;
     color: #EAD169;
-  }
-  /* Quản lý đơn hàng styles */
-  .order-management {
+}
+/* Quản lý người dùng styles */
+.user-management {
     margin-top: 20px;
-  }
-  .order-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  .order-table th,
-  .order-table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-  }
-  .order-table th {
-    background-color: #EAD169;
-    color: #191919;
-  }
-  .detail-btn {
-    background-color: #EAD169;
-    color: #191919;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  .detail-btn:hover {
-    background-color: #191919;
-    color: #EAD169;
-  }
-  /* Quản lý người dùng styles */
-  .user-management {
-    margin-top: 20px;
-  }
-  .user-management .button-add {
+}
+.user-management .button-add {
     background-color: #EAD169;
     color: #191919;
     border: none;
@@ -247,30 +251,30 @@
     border-radius: 4px;
     cursor: pointer;
     margin-bottom: 15px;
-  }
-  .user-management .button-add:hover {
+}
+.user-management .button-add:hover {
     background-color: #191919;
     color: #EAD169;
-  }
-  .user-table {
+}
+.user-table {
     width: 100%;
     border-collapse: collapse;
-  }
-  .user-table th,
-  .user-table td {
+}
+.user-table th,
+.user-table td {
     padding: 10px;
     border: 1px solid #ddd;
     text-align: left;
-  }
-  .user-table th {
+}
+.user-table th {
     background-color: #EAD169;
     color: #191919;
-  }
-  /* Quản lý VIP styles */
-  .vip-management {
+}
+/* Quản lý VIP styles */
+.vip-management {
     margin-top: 20px;
-  }
-  .vip-management .button-add {
+}
+.vip-management .button-add {
     background-color: #EAD169;
     color: #191919;
     border: none;
@@ -278,174 +282,229 @@
     border-radius: 4px;
     cursor: pointer;
     margin-bottom: 15px;
-  }
-  .vip-management .button-add:hover {
+}
+.vip-management .button-add:hover {
     background-color: #191919;
     color: #EAD169;
-  }
-  .vip-table {
+}
+.vip-table {
     width: 100%;
     border-collapse: collapse;
-  }
-  .vip-table th,
-  .vip-table td {
+}
+.vip-table th,
+.vip-table td {
     padding: 10px;
     border: 1px solid #ddd;
     text-align: left;
-  }
-  .vip-table th {
+}
+.vip-table th {
     background-color: #EAD169;
     color: #191919;
-  }
-  /* Quản lý Feedback styles */
-  .feedback-management {
+}
+/* Quản lý Feedback styles */
+.feedback-management {
     margin-top: 20px;
-  }
-  .feedback-table {
+}
+.feedback-table {
     width: 100%;
     border-collapse: collapse;
-  }
-  .feedback-table th,
-  .feedback-table td {
+}
+.feedback-table th,
+.feedback-table td {
     padding: 10px;
     border: 1px solid #ddd;
     text-align: left;
-  }
-  .feedback-table th {
+}
+.feedback-table th {
     background-color: #EAD169;
     color: #191919;
-  }
-  @media (max-width: 768px) {
+}
+@media (max-width: 768px) {
     .info-section {
-      grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
     }
     .dashboard-cards {
-      grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
     }
-  }
+}
 
-  /* Định dạng cho sanphamadd*/
+/* Định dạng cho sanphamadd */
 /* Định dạng cho form */
 .add-product .main-content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 30px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Định dạng các label */
 .add-product .form-group label {
-  font-size: 14px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
 }
 
 /* Định dạng các input và select */
 .add-product .form-control,
 .add-product .form-select,
 .add-product .custom-file-input {
-  height: 40px;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #e0a800; /* Màu vàng nhạt cho viền */
-  border-radius: 4px;
-  width: 100%;
-  margin-bottom: 15px;
-  box-sizing: border-box;
+    height: 40px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #e0a800; /* Màu vàng nhạt cho viền */
+    border-radius: 4px;
+    width: 100%;
+    margin-bottom: 15px;
+    box-sizing: border-box;
 }
 
 /* Định dạng cho input group (Giá) */
 .add-product .input-group-text {
-  background-color: #fff3cd; /* Màu nền vàng nhạt */
-  border: 1px solid #e0a800; /* Màu vàng cho viền */
-  border-radius: 4px 0 0 4px;
-  padding: 8px 12px;
+    background-color: #fff3cd; /* Màu nền vàng nhạt */
+    border: 1px solid #e0a800; /* Màu vàng cho viền */
+    border-radius: 4px 0 0 4px;
+    padding: 8px 12px;
 }
 
 /* Định dạng cho nút submit */
 .add-product .btn {
-  background-color: #e0a800; /* Màu vàng làm màu chủ đạo */
-  color: #fff;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 12px 30px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    background-color: #e0a800; /* Màu vàng làm màu chủ đạo */
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .add-product .btn:hover {
-  background-color: #d18900; /* Màu vàng tối hơn khi hover */
+    background-color: #d18900; /* Màu vàng tối hơn khi hover */
 }
 
 /* Định dạng cho file input */
 .add-product .custom-file {
-  position: relative;
-  width: 100%;
+    position: relative;
+    width: 100%;
 }
 
 .add-product .custom-file-input {
-  width: 100%;
-  height: 40px;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #e0a800; /* Màu vàng cho viền */
-  border-radius: 4px;
-  box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #e0a800; /* Màu vàng cho viền */
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 /* Cải thiện căn chỉnh các phần trong form */
 .add-product .form-group {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 /* Giới hạn chiều cao cho file input */
 .add-product .custom-file input[type="file"] {
-  padding-left: 10px;
-  padding-top: 5px;
+    padding-left: 10px;
+    padding-top: 5px;
 }
 
 /* Thêm khoảng cách cho các phần tử */
 .add-product .form-group {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 /* Container cho file input */
 .add-product .custom-file-container {
-  width: 100%;
-  position: relative;
+    width: 100%;
+    position: relative;
 }
 
 /* Cập nhật kiểu input file để nó không nằm trong khung */
 .add-product .custom-file-input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%; /* Làm rộng input file chiếm hết chiều rộng */
-  height: 100%; /* Làm cho input file có chiều cao bằng container */
-  opacity: 0; /* Ẩn phần input file */
-  cursor: pointer; /* Con trỏ chuột thay đổi khi hover */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Làm rộng input file chiếm hết chiều rộng */
+    height: 100%; /* Làm cho input file có chiều cao bằng container */
+    opacity: 0; /* Ẩn phần input file */
+    cursor: pointer; /* Con trỏ chuột thay đổi khi hover */
 }
 
 /* Cập nhật kiểu label để nó nằm ngoài khung */
 .add-product .custom-file-label {
-  display: inline-block;
-  padding: 10px;
-
-  color: #fff;
-  border: 1px solid #e0a800;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  width: 100%; /* Đảm bảo label chiếm hết chiều rộng của container */
-  text-align: center; /* Căn giữa chữ trong label */
+    display: inline-block;
+    padding: 10px;
+    color: #fff;
+    border: 1px solid #e0a800;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%; /* Đảm bảo label chiếm hết chiều rộng của container */
+    text-align: center; /* Căn giữa chữ trong label */
 }
 
 /* Khi hover label */
 .add-product .custom-file-label:hover {
-  background-color: #d18900;
+    background-color: #d18900;
 }
+
+
+
+
+
+
+.user-management .product-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.user-management .product-table th,
+.user-management .product-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+.user-management .product-table th {
+    background-color: #EAD169;
+    color: #191919;
+}
+.user-management .product-table th.manageorder-action,
+.user-management .product-table td.manageorder-action {
+    width: 200px !important;
+    text-align: center;
+}
+.user-management .product-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.user-management .button-add,
+.user-management .edit-btn,
+.user-management .delete-btn {
+    background-color: #EAD169;
+    color: #191919;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.user-management .button-add:hover,
+.user-management .edit-btn:hover,
+.user-management .delete-btn:hover {
+    background-color: #d18900;
+}
+.add-product .btn-primary {
+    background-color: #e0a800;
+    border-color: #e0a800;
+    color: #fff;
+    text-decoration: none;
+}
+.add-product .btn-primary:hover {
+    background-color: #d18900;
+    border-color: #d18900;
+}
+
+

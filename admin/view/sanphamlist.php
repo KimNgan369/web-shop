@@ -43,26 +43,6 @@ $html_sanphamlist ='';
         </thead>
         <tbody>
           <?=$html_sanphamlist;?>
-          <!-- <tr>
-            <td>1</td>
-            <td>Nhẫn kim cương</td>
-            
-            <td>Nhẫn</td>
-            <td>5,000,000 VNĐ</td>
-            <td>
-              <button class="edit-btn">Sửa</button>
-              <button class="delete-btn">Xóa</button>
-            </td>
-          </tr>
-          <tr> -->
-            <!-- <td>2</td>
-            <td>Vòng tay vàng</td>
-            <td>Vòng tay</td>
-            <td>3,200,000 VNĐ</td>
-            <td>
-              <button class="edit-btn">Sửa</button>
-              <button class="delete-btn">Xóa</button>
-            </td> -->
           </tr>
         </tbody>
       </table>

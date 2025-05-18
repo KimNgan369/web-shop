@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "../dao/products.php";
-
+include "../dao/global.php";
 // XỬ LÝ THÊM VÀO GIỎ HÀNG KHI NHẬN ĐƯỢC POST
 if (isset($_POST['addToCart'])) {
     // Khởi tạo giỏ hàng nếu chưa có
@@ -115,7 +115,7 @@ $total = $subtotal - $discount + $shipping_cost;
                         </div>
                         
                         <div class="d-flex align-items-center gap-3">
-                            <img src="../layout/img/<?= htmlspecialchars($item['image']) ?>" width="50">
+                            <img src="<?= IMG_PATH_ADMIN . htmlspecialchars($item['image']) ?>" width="50">
                             <span><?= htmlspecialchars($item['name']) ?></span>
                         </div>
                         

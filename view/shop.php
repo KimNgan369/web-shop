@@ -1,6 +1,6 @@
 <?php
 include_once "dao/products.php";
-
+include_once "dao/global.php";
 $searchKeyword = $_GET['keyword'] ?? '';
 $filtered_price = $_GET['price'] ?? [];
 $filtered_material = $_GET['material'] ?? [];
@@ -82,7 +82,7 @@ $dssp = get_dssp(10, $filtered_price, $filtered_material, $filtered_style, $sear
                 <?php if (!empty($dssp)) { 
                     foreach ($dssp as $sp) {
                         extract($sp);
-                        $img = 'layout/img/' . $image;
+                        $img = IMG_PATH . htmlspecialchars($image);
                         ?>
                         <div class="col-md-4 mb-4">
                             <div class="card h-100 shadow-sm">

@@ -1,7 +1,7 @@
 <?php
 
 include "../dao/products.php";
-
+include "../dao/global.php";
 $type = $_GET['type'] ?? null;
 $loai = $type;
 $products = [];
@@ -134,12 +134,11 @@ if ($type) {
                 <?php if (!empty($products)) {
                     foreach ($products as $sp) {
                         extract($sp);
-                        $img = '../layout/img/' . $image;
+                        $img = IMG_PATH_ADMIN . htmlspecialchars($image);
                         ?>
                         <div class="col-md-4 mb-4">
                             <div class="card h-100 shadow-sm">
-                                <img src="<?= $img ?>" class="card-img-top" alt="<?= htmlspecialchars($name) ?>" style="height: 250px; object-fit: cover;">
-                                <div class="card-body">
+                                    <img src="<?= $img ?>" class="card-img-top" alt="<?= htmlspecialchars($name) ?>" style="height: 250px; object-fit: cover;">                                <div class="card-body">
                                     <h5 class="card-title"><?= htmlspecialchars($name) ?></h5>
                                     <p class="card-text text-muted">Price: $<?= htmlspecialchars($price) ?></p>
                                     <a href="ring_detail.php?id=<?= $id ?>" class="btn btn-warning w-100">View More</a>

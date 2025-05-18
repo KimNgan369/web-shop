@@ -4,7 +4,7 @@
  */
 
 function pdo_get_connection() {
-    $dburl = "mysql:host=localhost;dbname=myjewelryshop1;charset=utf8";
+    $dburl = "mysql:host=localhost;dbname=myjewelryshop;charset=utf8";
     $username = "root";
     $password = ""; // để trống nếu bạn dùng XAMPP mặc định
 

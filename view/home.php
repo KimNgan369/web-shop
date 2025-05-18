@@ -1,22 +1,24 @@
 <?php
-    $html_bestsell = '';
-    foreach ($bestsell as $sp) {
-        extract($sp);  // Tạo các biến từ các trường trong mảng $sp
-        
-        // Kiểm tra nếu có hình ảnh, nếu không thì sử dụng ảnh mặc định
-        $image_path = isset($image) ? 'layout/img/' . $image : 'layout/img/default.png'; 
-        
-        $html_bestsell .= '  <div class="col-md-4 mb-4">
-                                <div class="card custom-card">
-                                    <img src="' . $image_path . '" class="card-img-top" alt="' . htmlspecialchars($name) . '"> <!-- Hình ảnh sản phẩm -->
-                                    <div class="card-body">
-                                        <h5 class="card-title fw-bold">' . htmlspecialchars($name) . '</h5> <!-- Tên sản phẩm -->
-                                        <p class="text-muted">Price: ' . htmlspecialchars($price) . '$</p> <!-- Giá sản phẩm -->
-                                        <a href="#" class="text-decoration-none">Explore Now! →</a> <!-- Nút mua hàng -->
-                                    </div>
+include __DIR__ . '/../dao/global.php'; // Make sure global.php is included
+
+$html_bestsell = '';
+foreach ($bestsell as $sp) {
+    extract($sp);
+    
+    // Update to use IMG_PATH constant
+    $image_path = isset($image) ? IMG_PATH . $image : 'layout/img/default.png';
+    
+    $html_bestsell .= '  <div class="col-md-4 mb-4">
+                            <div class="card custom-card">
+                                <img src="' . $image_path . '" class="card-img-top" alt="' . htmlspecialchars($name) . '">
+                                <div class="card-body">
+                                    <h5 class="card-title fw-bold">' . htmlspecialchars($name) . '</h5>
+                                    <p class="text-muted">Price: ' . htmlspecialchars($price) . '$</p>
+                                    <a href="#" class="text-decoration-none">Explore Now! →</a>
                                 </div>
-                            </div>';        
-    }
+                            </div>
+                        </div>';        
+}
 
     $html_danhmucsp = '';
     foreach ($danhmucsp as $sp) {

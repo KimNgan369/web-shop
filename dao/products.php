@@ -48,14 +48,16 @@ function get_bestselling($limi) {
     $sql = "SELECT p.id, p.name, p.price, p.image, SUM(oi.quantity) AS total_sold
             FROM products p
             JOIN order_items oi ON p.id = oi.product_id
-            JOIN orders o ON oi.order_id = o.id
-            WHERE o.status = 'Delivered'  -- Chỉ tính các đơn hàng đã giao
+            JOIN orders o ON oi.order_id = o.order_id
+            WHERE o.status = 'delivered'  -- Chỉ tính các đơn hàng đã giao
             GROUP BY p.id
             ORDER BY total_sold DESC
             LIMIT " . $limi;
     
     return pdo_query($sql);
 }
+
+
 
 function get_dssp($limi, $filtered_price = [], $filtered_material = [], $filtered_style = [], $keyword = '') {
     $sql = "SELECT * FROM products WHERE 1"; 

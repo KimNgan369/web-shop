@@ -40,88 +40,12 @@ foreach ($userlist as $user) {
                         </tr>';
 }
 ?>
-<!DOCTYPE html>
-<html>
+
 <head>
-    <title>Quản lý người dùng</title>
-    <style>
-        .main-content {
-            padding: 20px;
-        }
-        .main-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .main-header h1 {
-            font-size: 24px;
-            margin: 0;
-        }
-        .account-icon {
-            width: 30px;
-            height: 30px;
-        }
-        .user-management {
-            margin-top: 20px;
-        }
-        .button-add {
-            display: inline-block;
-            padding: 10px 15px;
-            background-color: #f5d038;
-            color: #333;
-            text-decoration: none;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-bottom: 15px;
-        }
-        .button-add:hover {
-            background-color: #e6c233;
-        }
-        .user-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-            display: block;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-        .user-table th,
-        .user-table td {
-            padding: 10px;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-        .user-table th {
-            background-color: #f5d038;
-            color: #333;
-        }
-        .user-table tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        .edit-btn,
-        .delete-btn {
-            padding: 5px 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            color: #333;
-        }
-        .edit-btn {
-            background-color: #f5d038;
-            margin-right: 5px;
-        }
-        .edit-btn:hover {
-            background-color: #e6c233;
-        }
-        .delete-btn {
-            background-color: #f5d038;
-        }
-        .delete-btn:hover {
-            background-color: #e6c233;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="admin.css">
 </head>
 <body>
     <div class="main-content">
@@ -129,12 +53,12 @@ foreach ($userlist as $user) {
             <h1 id="section-title">Quản lý người dùng</h1>
             <img class="account-icon" src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="Account Icon"/>
         </header>
-        <div class="user-management">
+        <div class="product-management">
             <a href="index.php?act=useradd" class="button-add">Thêm người dùng mới</a>
             <?php if (empty($userlist)): ?>
                 <p>Không có người dùng nào để hiển thị.</p>
             <?php else: ?>
-                <table class="user-table">
+                <table class="product-table">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -147,7 +71,7 @@ foreach ($userlist as $user) {
                             <th>Vai trò</th>
                             <th>Ngày tạo</th>
                             <th>Ngày cập nhật</th>
-                            <th>Hành động</th>
+                            <th class="manageorder-action">Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -157,5 +81,6 @@ foreach ($userlist as $user) {
             <?php endif; ?>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thêm người dùng</title>
+    <title>Thêm VIP mới</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="admin.css">
     <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
@@ -11,11 +11,11 @@
 <body>
     <div class="main-content">
         <header class="main-header">
-            <h1 id="section-title">Thêm người dùng</h1>
+            <h1 id="section-title">Thêm VIP mới</h1>
             <img class="account-icon" src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="Account Icon"/>
         </header>
         <div class="add-product">
-            <form class="addUser" action="index.php?act=useradd" method="POST">
+            <form class="addUser" action="index.php?act=vipadd" method="POST">
                 <div class="form-group">
                     <label for="username">Tên đăng nhập:</label>
                     <input type="text" class="form-control" name="username" id="username" placeholder="Nhập tên đăng nhập" required>
@@ -41,22 +41,13 @@
                     <textarea class="form-control" name="address" id="address" placeholder="Nhập địa chỉ"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="role">Vai trò:</label>
-                    <select class="form-select" name="role" id="role" required>
-                        <option value="user">User</option>
-                        <option value="admin">Admin</option>
-                    </select>
+                    <label for="total_spent">Tổng chi tiêu ($):</label>
+                    <input type="number" step="0.01" class="form-control" name="total_spent" id="total_spent" placeholder="Nhập tổng chi tiêu" required>
                 </div>
+                <input type="hidden" name="is_vip" value="1">
                 <div class="form-group">
-                    <label for="is_vip">Trạng thái:</label>
-                    <select class="form-select" name="is_vip" id="is_vip" required>
-                        <option value="0">Inactive</option>
-                        <option value="1">Active</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <button type="submit" name="adduser" class="btn btn-primary">Thêm người dùng</button>
-                    <a href="index.php?act=manage_user" class="btn btn-primary">Quay lại danh sách</a>
+                    <button type="submit" name="addvip" class="btn btn-primary">Thêm VIP</button>
+                    <a href="index.php?act=manage_vip" class="btn btn-primary">Quay lại danh sách</a>
                 </div>
             </form>
         </div>

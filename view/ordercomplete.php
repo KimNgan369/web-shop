@@ -1,13 +1,31 @@
 <?php
 session_start();
+include "../dao/global.php";
 
-// Kiểm tra nếu không có thông tin đơn hàng thì chuyển hướng về trang chủ
+if (!isset($_SESSION['order_info']) && isset($_GET['order_id'])) {
+    include "../dao/orders.php";
+    $order_id = (int)$_GET['order_id'];
+    $order = get_order_from_database($order_id);
+    
+    if (!$order) {
+        header("Location: ../index.php");
+        exit();
+    }
+    
+    $_SESSION['order_info'] = $order;
+}
+
+// Check if there's no order information, redirect to homepage
 if (!isset($_SESSION['order_info'])) {
     header("Location: ../index.php");
     exit();
 }
 
 $order = $_SESSION['order_info'];
+
+// Lấy tên tỉnh/quận trực tiếp từ order và loại bỏ tiền tố
+$province_name = preg_replace('/^(Tỉnh|Thành phố)\s+/', '', $order['customer']['province']);
+$district_name = preg_replace('/^(Quận|Huyện|Thị xã|Thành phố)\s+/', '', $order['customer']['district']);
 ?>
 
 <html lang="en">
@@ -20,10 +38,9 @@ $order = $_SESSION['order_info'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <style>
         body {
-            font-family: 'Poppins', sans-serif; /* Chon font chu Arial hoac sans-serif */
-            background-color: #f8f9fa; /* Mau nen xam nhat cho trang web */
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
         }
-        
     </style>
 </head>
 <body class="bg-light">
@@ -54,144 +71,53 @@ $order = $_SESSION['order_info'];
                     <span class="ms-2">Paid</span>
                 </div>
             </div>
-            <!-- <div class="border-bottom pb-4 mb-4">
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                    <div class="d-flex align-items-center">
-                        <img src="image.jpg" alt="Product Image" class="me-2" style="width: 50px; height: 50px;">
-                        <span>1x Hermes “CADUCEUS”</span>
-                    </div>
-                    <div class="text-start" style="width: 50px;">2x</div>
-                    <span class="ms-4">$120.00</span>
-                    <span>$240.00</span>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                    <div class="d-flex align-items-center">
-                        <img src="image.jpg" alt="Product Image" class="me-2" style="width: 50px; height: 50px;">
-                        <span>1x Hermes “CADUCEUS”</span>
-                    </div>
-                    <div class="text-start" style="width: 50px;">1x</div>
-                    <span class="ms-4">$2.00</span>
-                    <span>$2.00</span>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                    <div class="d-flex align-items-center">
-                        <img src="image.jpg" alt="Product Image" class="me-2" style="width: 50px; height: 50px;">
-                        <span>1x Hermes “CADUCEUS”</span>
-                    </div>
-                    <div class="text-start" style="width: 50px;">1x</div>
-                    <span class="ms-4">$3.00</span>
-                    <span>$3.00</span>
-                </div>
+            <div class="mb-4">
+                <span class="fw-semibold">Order Code: </span>
+                <span><?= htmlspecialchars($order['order_code'] ?? 'N/A') ?></span>
             </div>
-            
-            <div class="border-bottom pb-4 mb-4">
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                    <div class="d-flex align-items-center">
-                        <img src="image.jpg" alt="Product Image" class="me-2" style="width: 50px; height: 50px;">
-                        <span>1x Hermes “CADUCEUS”</span>
-                    </div>
-                    <div class="text-start" style="width: 50px;">1x</div>
-                    <span class="ms-4">$3.00</span>
-                    <span>$3.00</span>
-                </div>
-            </div>
-            <div class="border-bottom pb-4 mb-4">
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                    <div class="d-flex align-items-center">
-                        <img src="image.jpg" alt="Product Image" class="me-2" style="width: 50px; height: 50px;">
-                        <span>1x Hermes “CADUCEUS”</span>
-                    </div>
-                    <div class="text-start" style="width: 50px;">1x</div>
-                    <span class="ms-4">$3.00</span>
-                    <span>$3.00</span>
-                </div>
-            </div> -->
 
             <div class="border-bottom pb-4 mb-4">
                 <?php foreach ($order['cart'] as $item): ?>
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <div class="d-flex align-items-center">
-                        <img src="../layout/img/<?= htmlspecialchars($item['image']) ?>" class="me-2" style="width: 50px; height: 50px;">
+                        <img src="<?= IMG_PATH_ADMIN . htmlspecialchars($item['image']) ?>" class="me-2" style="width: 50px; height: 50px; object-fit: cover;">
                         <span><?= htmlspecialchars($item['name']) ?></span>
                     </div>
                     <div class="text-start" style="width: 50px;"><?= $item['quantity'] ?>x</div>
-                    <span class="ms-4"><?= number_format($item['price'], 0, ',', '.') ?>₫</span>
-                    <span><?= number_format($item['price'] * $item['quantity'], 0, ',', '.') ?>₫</span>
+                    <span class="ms-4">$<?= number_format($item['price'], 2) ?></span>
+                    <span>$<?= number_format($item['price'] * $item['quantity'], 2) ?></span>
                 </div>
                 <?php endforeach; ?>
             </div>
 
             <div class="d-flex justify-content-end align-items-center mb-4">
                 <span class="fw-semibold text-danger fs-5 me-auto">TOTAL</span>
-                <span class="ms-4 text-danger fs-5"><?= number_format($order['total'], 0, ',', '.') ?>₫</span>
+                <span class="ms-4 text-danger fs-5">$<?= number_format($order['total'], 2) ?></span>
             </div>
-
-
-            <!-- <div class="border-bottom pb-4 mb-4">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span>Shipping</span>
-                            <span>HoChiMinhCity, VietNam</span>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span>Shipping Options</span>
-                            <span>Same-Day Dispatching</span>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span>Email Money Transfer</span>
-                            <span>Interac</span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span>Subtotal</span>
-                            <span>$497.00</span>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span>Discount</span>
-                            <span>$0.0</span>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span>Shipping Costs</span>
-                            <span>$50.00</span>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span>Point</span>
-                            <span>-$250</span>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span class="fw-semibold">TOTAL</span>
-                            <span class="fw-semibold text-danger">$297.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
 
             <div class="border-bottom pb-4 mb-4">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span>Họ tên</span>
+                            <span>Full Name</span>
                             <span><?= htmlspecialchars($order['customer']['first_name']) . ' ' . htmlspecialchars($order['customer']['last_name']) ?></span>
                         </div>
                         <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span>Địa chỉ</span>
+                            <span>Address</span>
                             <span><?= htmlspecialchars($order['customer']['address']) ?></span>
                         </div>
                         <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span>Tỉnh/Thành phố</span>
-                            <span><?= htmlspecialchars($order['customer']['province']) ?></span>
+                            <span>State/Province</span>
+                            <span><?= htmlspecialchars($province_name) ?></span>
                         </div>
                         <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span>Quận/Huyện</span>
-                            <span><?= htmlspecialchars($order['customer']['district']) ?></span>
-                        </div>
+                            <span>District</span>
+                            <span><?= htmlspecialchars($district_name) ?></span>     
+                        </div>                   
                     </div>
                     <div class="col-md-6">
                         <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span>Số điện thoại</span>
+                            <span>Phone</span>
                             <span><?= htmlspecialchars($order['customer']['phone']) ?></span>
                         </div>
                         <div class="d-flex justify-content-between align-items-center mb-2">
@@ -199,26 +125,25 @@ $order = $_SESSION['order_info'];
                             <span><?= htmlspecialchars($order['customer']['email']) ?></span>
                         </div>
                         <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span>Ngày đặt hàng</span>
+                            <span>Order Date</span>
                             <span><?= $order['order_date'] ?></span>
                         </div>
                         <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span>Ghi chú</span>
-                            <span><?= !empty($order['customer']['notes']) ? htmlspecialchars($order['customer']['notes']) : 'Không có' ?></span>
+                            <span>Notes</span>
+                            <span><?= !empty($order['customer']['notes']) ? htmlspecialchars($order['customer']['notes']) : 'None' ?></span>
                         </div>
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <span class="fw-semibold">TOTAL</span>
-                            <span class="fw-semibold text-danger"><?= number_format($order['total'], 0, ',', '.') ?>₫</span>
-
+                            <span class="fw-semibold text-danger">$<?= number_format($order['total'], 2) ?></span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="text-center mt-8">
-                <p class="mb-4">Mua tiếp, Nhấp vào nút bên dưới</p>
+                <p class="mb-4">Continue shopping? Click the button below</p>
                 <button class="btn btn-warning text-white rounded-pill" onclick="window.location.href='../index.php'">
-                    Quay lại trang chủ
+                    Back to Homepage
                 </button>
             </div>
         </div>

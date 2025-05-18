@@ -67,9 +67,9 @@ if (isset($_SESSION['s_user']) && (count($_SESSION['s_user']) > 0)) {
         
         <div class="navigation-links">
             <ul>
-                <li><a href="?pg=home">Trang Chủ</a></li>
-                <li><a href="?pg=shop">Sản Phẩm</a></li>
-                <li><a href="?pg=contacts">Liên Hệ</a></li>
+                <li><a href="?pg=home">Home</a></li>
+                <li><a href="?pg=shop">Shop</a></li>
+                <li><a href="?pg=contacts">Contacts</a></li>
             </ul>
         </div>
         

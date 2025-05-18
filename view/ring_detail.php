@@ -20,7 +20,7 @@ if (!$product) {
 }
 
 // Kiểm tra ảnh tồn tại
-$image_path = "../layout/img/" . $product['image'];
+$image_path = IMG_PATH_ADMIN . $product['image'];
 if (!file_exists($image_path)) {
     die("<div class='alert alert-warning'>Ảnh sản phẩm không tồn tại</div>");
 }
@@ -32,7 +32,7 @@ if ($conn->connect_error) {
 }
 
 // Lấy danh sách ảnh (bao gồm ảnh chính và 4 ảnh khác)
-$thumbnails = ["../layout/img/" . $product['image']]; // Ảnh chính
+$thumbnails = [IMG_PATH_ADMIN . $product['image']]; // Ảnh chính
 
 $sql = "SELECT image FROM products WHERE id != ? LIMIT 4"; 
 $stmt = $conn->prepare($sql);
@@ -42,7 +42,7 @@ $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        $thumbnails[] = "../layout/img/" . $row['image'];
+        $thumbnails[] = IMG_PATH_ADMIN . $row['image'];
     }
 }
 $stmt->close();

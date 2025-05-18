@@ -25,7 +25,9 @@ foreach ($danhmuclist as $dm) {
 }
 ?>
 
-
+<head>
+    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+</head>
 <div class="main-content">
     <!-- Header hiển thị tên mục theo menu -->
     <header class="main-header">
@@ -36,13 +38,15 @@ foreach ($danhmuclist as $dm) {
         src="https://cdn-icons-png.flaticon.com/512/747/747376.png" 
         alt="Account Icon"
       />
+
     </header>
 
 <div class="add-product">
     <form class="addPro" action="index.php?act=addproducts" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?=isset($sp['id']) ? $sp['id'] : ''?>">
         <div class="form-group">
-            <label for="productImage">Ảnh sản phẩm <?=$imgpath?></label>
+            <label for="productImage">Ảnh sản phẩm</label>
+            <span><?=$imgpath?></span> <!-- Hiển thị đường dẫn riêng -->
             <div class="custom-file-container">
                 <input type="file" name="image" class="custom-file-input" id="productImage" onchange="updateFileName()">
                 <?=$image_display?>
@@ -56,8 +60,7 @@ foreach ($danhmuclist as $dm) {
         </div>
         <div class="form-group">
             <label for="name">Mô tả:</label>
-            <input type="text" class="form-control" name="description" value="<?=($description!="")?$description:"";?>" id="name" placeholder="Nhập mô tả sản phẩm">
-        </div>
+            <textarea class="form-control" name="description" id="description" placeholder="Nhập mô tả sản phẩm"><?=htmlspecialchars($description)?></textarea>        </div>
         <div class="form-group">
             <label for="categories">Danh mục:</label>
             <select class="form-select" name="danhmuc" aria-label="Default select example">
@@ -107,3 +110,6 @@ foreach ($danhmuclist as $dm) {
     </form>
 </div>
 <script src="layout/js/admin.js"></script>
+<script>
+        CKEDITOR.replace('description');
+</script>
